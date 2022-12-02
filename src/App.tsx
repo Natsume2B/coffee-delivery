@@ -1,10 +1,13 @@
+
+import { Header } from './components/Header'
 import './styles/global.css'
 
 export function App() {
 
   return (
-    <div>
-      <h1>Henlo Warudo!!!</h1>
+    <div className='w-3/4 m-auto'>
+      <Header/>
+      
     </div>
   )
 }
