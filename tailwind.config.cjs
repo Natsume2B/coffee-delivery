@@ -26,11 +26,12 @@ module.exports = {
       'background':'#FAFAFA',
       'white':'#FFFFFF',
     },
-    fontFamily: {
-      'Baloo-2': ['Baloo-2','cursive'],
-      'Roboto':['Roboto', 'sans-serif'],
+    extend: {
+      fontFamily: {
+        baloo2: "'Baloo 2', cursive;",
+        roboto:"'Roboto', sans-serif",
+      },
     },
-    extend: {},
   },
   plugins: [],
 }
