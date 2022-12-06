@@ -1,12 +1,12 @@
 
-import { Header } from './components/Header'
-import { Home } from './components/Home'
+import { Header } from './components/pages/Header'
+import { Home } from './components/pages/Home'
 import './styles/global.css'
 
 export function App() {
 
   return (
-    <div className='w-2/3 m-auto min-w-max'>
+    <div className='max-w-[66.6666%] m-auto min-w-min'>
       <Header/>
       <Home/>
     </div>
