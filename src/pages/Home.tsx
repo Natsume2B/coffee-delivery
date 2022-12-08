@@ -1,11 +1,10 @@
 import coffeeDelivery from '../assets/coffee-delivery.svg'
-import expressoTradicional from '../assets/coffees/expresso-tradicional.svg'
 
 import { ShoppingCart } from 'phosphor-react'
 import { Package } from 'phosphor-react'
 import { Timer } from 'phosphor-react'
 import { Coffee } from 'phosphor-react'
-import { CoffeeProduct } from '../components/CoffeeProduct'
+import { Products } from '../components/Products'
 
 export function Home() {
   return (
@@ -52,15 +51,7 @@ export function Home() {
         <h1 className='font-baloo2 text-3xl mb-14'>
           Nossos cafés
         </h1>
-        <div className='flex flex-wrap gap-8 '>
-          <CoffeeProduct 
-          src={expressoTradicional}
-          coffeeType='Tradicional'
-          name='Expresso Tradicional'
-          about='O tradicional café feito com água quente e grãos moídos'
-          price='9,90'
-          />
-        </div>
+        <Products />
       </section>
     </main>
 
