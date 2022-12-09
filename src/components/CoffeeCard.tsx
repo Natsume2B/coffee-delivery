@@ -11,7 +11,7 @@ interface CoffeeProductProps {
 }
 
 
-export function CoffeeProduct({ src, coffeeType, name, about, price }: CoffeeProductProps) {
+export function CoffeeCard({ src, coffeeType, name, about, price }: CoffeeProductProps) {
   return (
     <div className="flex flex-col items-center text-center max-w-[256px] rounded-tr-[2.250rem] rounded-bl-[2.250rem] bg-base-card mb-5">
       <img className="mt-[-1.45rem] mb-3" src={src} alt="" />
