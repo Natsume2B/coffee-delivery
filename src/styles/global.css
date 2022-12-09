@@ -6,4 +6,12 @@
   html {
     font-family: Roboto, system-ui, sans-serif
   }
+
+  body {
+    @apply bg-background
+  }
+
+  span, p {
+    @apply text-base-text
+  }
 }
