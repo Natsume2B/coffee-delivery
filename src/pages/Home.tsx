@@ -8,7 +8,7 @@ import { Products } from '../components/Products'
 
 export function Home() {
   return (
-    <main className='mb-36 min-w-min'>
+    <main className='mb-36'>
       <section className='flex justify-between mb-28 min-w-min'>
         <div>
           <h1 className='font-baloo2 font-extrabold text-5xl mb-4 text-base-title leading-snug'>Enconte o café perfeito<br />para qualquer hora do dia</h1>
