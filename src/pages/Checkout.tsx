@@ -3,10 +3,12 @@ import { CurrencyDollar } from 'phosphor-react'
 import { CreditCard } from 'phosphor-react'
 import { Bank } from 'phosphor-react'
 import { Money } from 'phosphor-react'
+import { CheckoutCoffeeCard } from '../components/CheckoutCoffeeCard'
+import { CoffeeCard } from '../components/CoffeeCard'
 
 export function Checkout() {
   return (
-    <div className='grid grid-cols-2'>
+    <div className='grid grid-cols-2 gap-8'>
       <section>
         <h1 className='font-baloo2 text-lg mb-4' >
           Complete seu pedido
@@ -107,6 +109,35 @@ export function Checkout() {
               <Money />
               <span className='text-xs'>DINHEIRO</span>
             </button>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <header className='font-baloo2 mb-4 text-lg'>
+          <h1>Cafés selecionados</h1>
+        </header>
+        <div className='rounded-tr-[2.250rem] rounded-bl-[2.250rem] bg-base-card w-4/5'>
+          <div className='flex flex-col items-center'>
+            <div className='mb-6'>
+              <CheckoutCoffeeCard />
+              <CheckoutCoffeeCard />
+            </div>
+          </div>
+          <div className='flex flex-col p-10'>
+            <div className='flex justify-between mb-3'>
+              <span className='text-sm'>Total de itens</span>
+              <span>R$ 29,70</span>
+            </div>
+            <div className='flex justify-between mb-3'>
+              <span className='text-sm'>Entrega</span>
+              <span>R$ 3,50</span>
+            </div>
+            <div className='flex justify-between mb-6'>
+              <span className='font-bold text-xl'>Total</span>
+              <span className='font-bold text-xl'>R$ 33,20</span>
+            </div>
+            <button className='rounded-md py-3 bg-product-yellow text-white hover:bg-product-yellow-dark'>CONFIRMAR PEDIDO</button>
           </div>
         </div>
       </section>

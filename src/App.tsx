@@ -6,7 +6,7 @@ import './styles/global.css'
 export function App() {
 
   return (
-    <div className='max-w-[66%] m-auto min-w-min'>
+    <div>
       <BrowserRouter>
         <Router></Router>
       </BrowserRouter>

@@ -3,7 +3,7 @@ import { Header } from '../../components/Header'
 
 export function DefaultLayout() {
   return (
-    <div>
+    <div className='max-w-[66%] m-auto min-w-min'>
       <Header />
       <Outlet />
     </div>
