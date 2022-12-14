@@ -16,7 +16,7 @@ import { Minus, Plus, Trash } from 'phosphor-react'
 
 export function CheckoutCoffeeCard() {
   return (
-    <div className='flex gap-5 px-10 pt-10 pb-6 border-b border-base-button'>
+    <div className='flex gap-5 pt-10 pb-6 border-b border-base-button justify-between'>
       <img className='w-16' src={expressoTradicional} alt="" />
       <div>
         <span className='text-base-subtitle'>Expresso Tradicional</span>

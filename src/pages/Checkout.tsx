@@ -6,9 +6,11 @@ import { Money } from 'phosphor-react'
 import { CheckoutCoffeeCard } from '../components/CheckoutCoffeeCard'
 import { CoffeeCard } from '../components/CoffeeCard'
 
+import { NavLink } from 'react-router-dom'
+
 export function Checkout() {
   return (
-    <div className='grid grid-cols-2 gap-8'>
+    <div className='grid grid-cols-[60%_40%] gap-8'>
       <section>
         <h1 className='font-baloo2 text-lg mb-4' >
           Complete seu pedido
@@ -97,15 +99,15 @@ export function Checkout() {
           </header>
 
           <div className='flex gap-3'>
-            <button className='w-1/3 inline-flex items-center gap-3 p-4 rounded-md bg-base-button text-product-purple'>
+            <button className='w-1/3 inline-flex items-center p-4 gap-2 rounded-md bg-base-button text-product-purple'>
               <CreditCard />
               <span className='text-xs'>CARTÃO DE CRÉDITO</span>
             </button>
-            <button className='w-1/3 inline-flex items-center gap-3 p-4 rounded-md bg-base-button text-product-purple'>
+            <button className='w-1/3 inline-flex items-center p-4 gap-2 rounded-md bg-base-button text-product-purple'>
               <Bank />
               <span className='text-xs'>CARTÃO DE DÉBITO</span>
             </button>
-            <button className='w-1/3 inline-flex items-center gap-3 p-4 rounded-md bg-base-button text-product-purple'>
+            <button className='w-1/3 inline-flex items-center p-4 gap-2 rounded-md bg-base-button text-product-purple'>
               <Money />
               <span className='text-xs'>DINHEIRO</span>
             </button>
@@ -117,14 +119,14 @@ export function Checkout() {
         <header className='font-baloo2 mb-4 text-lg'>
           <h1>Cafés selecionados</h1>
         </header>
-        <div className='rounded-tr-[2.250rem] rounded-bl-[2.250rem] bg-base-card w-4/5'>
-          <div className='flex flex-col items-center'>
-            <div className='mb-6'>
+        <div className='items-center rounded-tr-[2.750rem] rounded-bl-[2.750rem] rounded-tl-md rounded-br-md bg-base-card pb-10'>
+          <div>
+            <div className='flex flex-col px-10 mb-6'>
               <CheckoutCoffeeCard />
               <CheckoutCoffeeCard />
             </div>
           </div>
-          <div className='flex flex-col p-10'>
+          <div className='px-10'>
             <div className='flex justify-between mb-3'>
               <span className='text-sm'>Total de itens</span>
               <span>R$ 29,70</span>
@@ -137,7 +139,15 @@ export function Checkout() {
               <span className='font-bold text-xl'>Total</span>
               <span className='font-bold text-xl'>R$ 33,20</span>
             </div>
-            <button className='rounded-md py-3 bg-product-yellow text-white hover:bg-product-yellow-dark'>CONFIRMAR PEDIDO</button>
+            <NavLink
+              to='/checkoutSuccess'
+              title='checkout com sucesso'
+              className='flex justify-center rounded-md py-3 bg-product-yellow text-white hover:bg-product-yellow-dark'
+            >
+              <button>
+                CONFIRMAR PEDIDO
+              </button>
+            </NavLink>
           </div>
         </div>
       </section>

@@ -13,7 +13,7 @@ interface CoffeeProductProps {
 
 export function CoffeeCard({ src, coffeeType, name, about, price }: CoffeeProductProps) {
   return (
-    <div className="flex flex-col items-center text-center max-w-[256px] rounded-tr-[2.250rem] rounded-bl-[2.250rem] bg-base-card mb-5">
+    <div className="flex flex-col items-center text-center max-w-[256px] rounded-tr-[2.250rem] rounded-bl-[2.250rem] rounded-tl-md rounded-br-md bg-base-card mb-5">
       <img className="mt-[-1.45rem] mb-3" src={src} alt="" />
       <span className="text-[10px] font-bold p-1 px-2 rounded-full bg-product-yellow-light text-product-yellow-dark">{coffeeType}</span>
       <h1 className="font-baloo2 text-xl mb-2">{name}</h1>
