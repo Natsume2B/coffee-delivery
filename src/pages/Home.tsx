@@ -8,8 +8,8 @@ import { Products } from '../components/Products'
 
 export function Home() {
   return (
-    <main className='mb-36 min-w-min'>
-      <section className='flex justify-between mb-28 min-w-min'>
+    <main className='mb-36'>
+      <section className='flex flex-row justify-between mb-24'>
         <div>
           <h1 className='font-baloo2 font-extrabold text-5xl mb-4 text-base-title leading-snug'>Enconte o café perfeito<br />para qualquer hora do dia</h1>
           <p className='text-xl mb-16'>Com o Coffee Delivery você recebe seu café onde estiver, a<br /> qualquer hora</p>
@@ -47,7 +47,7 @@ export function Home() {
         <img className='ml-14' src={coffeeDelivery} alt="Copo de café" />
       </section>
 
-      <section>
+      <section className='col-span-2 row-span-2'>
         <h1 className='font-baloo2 text-3xl mb-14'>
           Nossos cafés
         </h1>

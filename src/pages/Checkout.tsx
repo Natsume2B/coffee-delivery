@@ -1,29 +1,37 @@
 import { MapPinLine } from 'phosphor-react'
+import { CurrencyDollar } from 'phosphor-react'
+import { CreditCard } from 'phosphor-react'
+import { Bank } from 'phosphor-react'
+import { Money } from 'phosphor-react'
+import { CheckoutCoffeeCard } from '../components/CheckoutCoffeeCard'
+import { CoffeeCard } from '../components/CoffeeCard'
+
+import { NavLink } from 'react-router-dom'
 
 export function Checkout() {
   return (
-    <div className='grid grid-cols-2'>
-      <section className='max-w-full'>
+    <div className='grid grid-cols-[60%_40%] gap-8'>
+      <section>
         <h1 className='font-baloo2 text-lg mb-4' >
           Complete seu pedido
         </h1>
-        <div className="p-10 bg-base-card">
+        <div className="p-10 bg-base-card mb-3 rounded-md">
           <div className='flex mb-8 gap-2'>
             <MapPinLine size={22} className="text-product-yellow-dark" />
-            <header className='flex flex-col'>
-              <h2 className='flex items-center'>
+            <header>
+              <h2>
                 Endereço de entrega
               </h2>
               <span> Informe o endereço onde deseja receber o seu pedido</span>
             </header>
           </div>
 
-          <form action="" className='grid grid-cols-3'>
+          <form action="" className='grid grid-cols-[30%_55%_15%] gap-3'>
 
             <input type="number"
               placeholder="CEP"
               name="cep"
-              className='mb-4 p-3 rounded  bg-base-input border border-base-button text-base-label'
+              className='mb-1 p-3 rounded row-start-1 bg-base-input border border-base-button text-base-label'
             />
             <label htmlFor="cep"></label>
 
@@ -31,7 +39,7 @@ export function Checkout() {
               type="text"
               placeholder="Rua"
               name="rua"
-              className='mb-4 p-3 rounded col-start-1 col-span-3 bg-base-input border border-base-button text-base-label'
+              className='mb-1 p-3 rounded row-start-2 col-span-3  bg-base-input border border-base-button text-base-label'
             />
             <label htmlFor="rua"></label>
 
@@ -40,7 +48,7 @@ export function Checkout() {
               type="number"
               placeholder="Número"
               name="numero"
-              className='mb-4 p-3 rounded col-start-1 row-start-3 bg-base-input border border-base-button text-base-label'
+              className='mb-1 p-3 rounded row-start-3  bg-base-input border border-base-button text-base-label'
             />
             <label htmlFor="numero"></label>
 
@@ -48,7 +56,7 @@ export function Checkout() {
               type="text"
               placeholder="Complemento"
               name="complemento"
-              className='mb-4 p-3 ml-3 rounded col-start-2 row-start-3 col-span-2 bg-base-input border border-base-button text-base-label'
+              className='mb-1 p-3 rounded row-start-3  bg-base-input border border-base-button text-base-label'
             />
             <label htmlFor="complemento"></label>
 
@@ -56,7 +64,7 @@ export function Checkout() {
               type="text"
               placeholder="Bairro"
               name="bairro"
-              className='mb-4 p-3 rounded col-start-1 row-start-5 bg-base-input border border-base-button text-base-label'
+              className='mb-1 p-3 rounded row-start-4 bg-base-input border border-base-button text-base-label'
             />
             <label htmlFor="bairro"></label>
 
@@ -64,7 +72,7 @@ export function Checkout() {
               type="text"
               placeholder="Cidade"
               name="cidade"
-              className='mb-4 p-3 rounded ml-3 col-start-2 row-start-5 w-[146.5%] bg-base-input border border-base-button text-base-label'
+              className='mb-1 p-3 rounded row-start-4 bg-base-input border border-base-button text-base-label'
             />
             <label htmlFor="cidade"></label>
 
@@ -72,13 +80,76 @@ export function Checkout() {
               type="text"
               placeholder="UF"
               name="uf"
-              className='mb-4 p-3 rounded ml-[calc(53.5%_+_0.75rem)] max-w-max col-start-3 row-start-5 w-2/5 bg-base-input border border-base-button text-base-label'
+              className='mb-1 p-3 rounded row-start-4 bg-base-input border border-base-button text-base-label'
             />
             <label htmlFor="uf"></label>
 
           </form>
         </div>
 
+        <div className='bg-base-card p-10 rounded-md'>
+          <header className='flex flex-row mb-8 gap-2'>
+            <CurrencyDollar size={22} className='text-product-purple' />
+            <div>
+              <h2>
+                Pagamento
+              </h2>
+              <span>O pagamento é feito na entrega. Escolha a forma que deseja pagar</span>
+            </div>
+          </header>
+
+          <div className='flex gap-3'>
+            <button className='w-1/3 inline-flex items-center p-4 gap-2 rounded-md bg-base-button text-product-purple'>
+              <CreditCard />
+              <span className='text-xs'>CARTÃO DE CRÉDITO</span>
+            </button>
+            <button className='w-1/3 inline-flex items-center p-4 gap-2 rounded-md bg-base-button text-product-purple'>
+              <Bank />
+              <span className='text-xs'>CARTÃO DE DÉBITO</span>
+            </button>
+            <button className='w-1/3 inline-flex items-center p-4 gap-2 rounded-md bg-base-button text-product-purple'>
+              <Money />
+              <span className='text-xs'>DINHEIRO</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <header className='font-baloo2 mb-4 text-lg'>
+          <h1>Cafés selecionados</h1>
+        </header>
+        <div className='items-center rounded-tr-[2.750rem] rounded-bl-[2.750rem] rounded-tl-md rounded-br-md bg-base-card pb-10'>
+          <div>
+            <div className='flex flex-col px-10 mb-6'>
+              <CheckoutCoffeeCard />
+              <CheckoutCoffeeCard />
+            </div>
+          </div>
+          <div className='px-10'>
+            <div className='flex justify-between mb-3'>
+              <span className='text-sm'>Total de itens</span>
+              <span>R$ 29,70</span>
+            </div>
+            <div className='flex justify-between mb-3'>
+              <span className='text-sm'>Entrega</span>
+              <span>R$ 3,50</span>
+            </div>
+            <div className='flex justify-between mb-6'>
+              <span className='font-bold text-xl'>Total</span>
+              <span className='font-bold text-xl'>R$ 33,20</span>
+            </div>
+            <NavLink
+              to='/checkoutSuccess'
+              title='checkout com sucesso'
+              className='flex justify-center rounded-md py-3 bg-product-yellow text-white hover:bg-product-yellow-dark'
+            >
+              <button>
+                CONFIRMAR PEDIDO
+              </button>
+            </NavLink>
+          </div>
+        </div>
       </section>
     </div>
 
