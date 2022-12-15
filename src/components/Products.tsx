@@ -14,105 +14,117 @@ import havaiano from '../assets/coffees/havaiano.svg'
 import arabe from '../assets/coffees/arabe.svg'
 import irlandes from '../assets/coffees/irlandes.svg'
 
-import { CoffeeCard } from './CoffeeCard'
+import { CoffeeCard1Type } from './CoffeeCard'
+import { CoffeeCard2Type } from './CoffeeCard'
+import { CoffeeCard3Type } from './CoffeeCard'
 
 export function Products() {
   return (
     <div className='flex flex-wrap gap-8 '>
-      <CoffeeCard
+      <CoffeeCard1Type
         src={expressoTradicional}
-        coffeeType='Tradicional'
+        coffeeType='TRADICIONAL'
         name='Expresso Tradicional'
         about='O tradicional café feito com água quente e grãos moídos'
         price='9,90'
       />
-      <CoffeeCard
+      <CoffeeCard1Type
         src={expressoAmericano}
-        coffeeType='Tradicional'
+        coffeeType='TRADICIONAL'
         name='Expresso Ameriano'
         about='Expresso diluído, menos intenso que o tradicional'
         price='9,90'
       />
-      <CoffeeCard
+      <CoffeeCard1Type
         src={expressoCremoso}
-        coffeeType='Tradicional'
+        coffeeType='TRADICIONAL'
         name='Expresso Cremoso'
         about='Café expresso tradicional com espuma cremosa'
         price='9,90'
       />
-      <CoffeeCard
+      <CoffeeCard2Type
         src={expressoGelado}
         coffeeType='Tradicional'
+        coffeeType2='GELADO'
         name='Expresso Gelado'
         about='Bebida preparada com café expresso e cubos de gelo'
         price='9,90'
       />
-      <CoffeeCard
+      <CoffeeCard2Type
         src={cafeComLeite}
-        coffeeType='Tradicional'
+        coffeeType='TRADICIONAL'
+        coffeeType2='COM LEITE'
         name='Café com Leite'
         about='Meio a meio de expresso tradicional com leite vaporizado'
         price='9,90'
       />
-      <CoffeeCard
+      <CoffeeCard2Type
         src={latte}
-        coffeeType='Tradicional'
+        coffeeType='TRADICIONAL'
+        coffeeType2='COM LEITE'
         name='Latte'
         about='Uma dose de café expresso com o dobro de leite e espuma cremosa'
         price='9,90'
       />
-      <CoffeeCard
+      <CoffeeCard2Type
         src={capuccino}
-        coffeeType='Tradicional'
+        coffeeType='TRADICIONAL'
+        coffeeType2='COM LEITE'
         name='Capuccino'
         about='Bebida com canela feita de doses iguais de café, leite e espuma'
         price='9,90'
       />
-      <CoffeeCard
+      <CoffeeCard2Type
         src={macchiato}
-        coffeeType='Tradicional'
+        coffeeType='TRADICIONAL'
+        coffeeType2='COM LEITE'
         name='Macchiato'
         about='Café expresso misturado com um pouco de leite quente e espuma'
         price='9,90'
       />
-      <CoffeeCard
+      <CoffeeCard2Type
         src={mocaccino}
-        coffeeType='Tradicional'
+        coffeeType='TRADICIONAL'
+        coffeeType2='COM LEITE'
         name='Mocaccino'
         about='Café expresso com calda de chocolate, pouco leite e espuma'
         price='9,90'
       />
-      <CoffeeCard
+      <CoffeeCard2Type
         src={chocolateQuente}
-        coffeeType='Especial'
+        coffeeType='ESPECIAL COM LEITE'
+        coffeeType2='COM LEITE'
         name='Chocolate Quente'
         about='Bebida feita com chocolate dissolvido no leite quente e café'
         price='9,90'
       />
-      <CoffeeCard
+      <CoffeeCard3Type
         src={cubano}
-        coffeeType='Especial'
+        coffeeType='ESPECIAL'
+        coffeeType2='ALCOÓLICO'
+        coffeeType3='GELADO'
         name='Cubano'
         about='Drink gelado de café expresso com rum, creme de leite e hortelã'
         price='9,90'
       />
-      <CoffeeCard
+      <CoffeeCard1Type
         src={havaiano}
-        coffeeType='Especial'
+        coffeeType='ESPECIAL'
         name='Havaiano'
         about='Bebida adocicada preparada com café e leite de coco'
         price='9,90'
       />
-      <CoffeeCard
+      <CoffeeCard1Type
         src={arabe}
-        coffeeType='Especial'
+        coffeeType='ESPECIAL'
         name='Árabe'
         about='Bebida preparada com grãos de café árabe e especiarias'
         price='9,90'
       />
-      <CoffeeCard
+      <CoffeeCard2Type
         src={irlandes}
-        coffeeType='Especial'
+        coffeeType='ESPECIAL'
+        coffeeType2='ALCOÓLICO'
         name='Irlandês'
         about='Bebida a base de café, uísque irlandês, açúcar e chantilly'
         price='9,90'
