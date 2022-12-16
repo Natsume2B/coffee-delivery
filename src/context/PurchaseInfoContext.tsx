@@ -14,7 +14,7 @@ export function PurchaseInfoContextProvider({
   children,
 }: PurchaseInfoContextProviderProps) {
 
-  const [firstChecked, setfirstChecked] = useState(false)
+  const [firstChecked, setfirstChecked] = useState(true)
   const [secondChecked, setSecondChecked] = useState(false)
   const [thirdChecked, setThirdChecked] = useState(false)
 
