@@ -1,14 +1,20 @@
 import { MapPinLine } from 'phosphor-react'
 import { CurrencyDollar } from 'phosphor-react'
-import { CreditCard } from 'phosphor-react'
 import { Bank } from 'phosphor-react'
 import { Money } from 'phosphor-react'
+
 import { CheckoutCoffeeCard } from '../components/CheckoutCoffeeCard'
-import { CoffeeCard } from '../components/CoffeeCard'
 
 import { NavLink } from 'react-router-dom'
+import { useContext } from 'react'
+import { PurchaseInfoContext } from '../context/PurchaseInfoContext'
+
+
 
 export function Checkout() {
+  const { creditCardButton, debitCardButton, moneyButton } = useContext(PurchaseInfoContext)
+
+
   return (
     <div className='grid grid-cols-[60%_40%] gap-8'>
       <section>
@@ -31,7 +37,7 @@ export function Checkout() {
             <input type="number"
               placeholder="CEP"
               name="cep"
-              className='mb-1 p-3 rounded row-start-1 bg-base-input border border-base-button text-base-label'
+              className='mb-1 p-3 rounded row-start-1 focus:border-none focus:outline focus:outline-product-yellow-dark bg-base-input border border-base-button text-base-label'
             />
             <label htmlFor="cep"></label>
 
@@ -39,7 +45,7 @@ export function Checkout() {
               type="text"
               placeholder="Rua"
               name="rua"
-              className='mb-1 p-3 rounded row-start-2 col-span-3  bg-base-input border border-base-button text-base-label'
+              className='mb-1 p-3 rounded row-start-2 col-span-3 focus:border-none focus:outline focus:outline-product-yellow-dark bg-base-input border border-base-button text-base-label'
             />
             <label htmlFor="rua"></label>
 
@@ -48,7 +54,7 @@ export function Checkout() {
               type="number"
               placeholder="Número"
               name="numero"
-              className='mb-1 p-3 rounded row-start-3  bg-base-input border border-base-button text-base-label'
+              className='mb-1 p-3 rounded row-start-3 focus:border-none focus:outline focus:outline-product-yellow-dark bg-base-input border border-base-button text-base-label'
             />
             <label htmlFor="numero"></label>
 
@@ -56,7 +62,7 @@ export function Checkout() {
               type="text"
               placeholder="Complemento"
               name="complemento"
-              className='mb-1 p-3 rounded row-start-3  bg-base-input border border-base-button text-base-label'
+              className='mb-1 p-3 rounded row-start-3 focus:border-none focus:outline focus:outline-product-yellow-dark bg-base-input border border-base-button text-base-label'
             />
             <label htmlFor="complemento"></label>
 
@@ -64,7 +70,7 @@ export function Checkout() {
               type="text"
               placeholder="Bairro"
               name="bairro"
-              className='mb-1 p-3 rounded row-start-4 bg-base-input border border-base-button text-base-label'
+              className='mb-1 p-3 rounded row-start-4 focus:border-none focus:outline focus:outline-product-yellow-dark bg-base-input border border-base-button text-base-label'
             />
             <label htmlFor="bairro"></label>
 
@@ -72,7 +78,7 @@ export function Checkout() {
               type="text"
               placeholder="Cidade"
               name="cidade"
-              className='mb-1 p-3 rounded row-start-4 bg-base-input border border-base-button text-base-label'
+              className='mb-1 p-3 rounded row-start-4 focus:border-none focus:outline focus:outline-product-yellow-dark bg-base-input border border-base-button text-base-label'
             />
             <label htmlFor="cidade"></label>
 
@@ -80,7 +86,8 @@ export function Checkout() {
               type="text"
               placeholder="UF"
               name="uf"
-              className='mb-1 p-3 rounded row-start-4 bg-base-input border border-base-button text-base-label'
+              className='mb-1 p-3 rounded row-start-4 focus:border-none focus:outline focus:outline-product-yellow-dark bg-base-input border border-base-button text-base-label'
+              maxLength={2}
             />
             <label htmlFor="uf"></label>
 
@@ -99,18 +106,9 @@ export function Checkout() {
           </header>
 
           <div className='flex gap-3'>
-            <button className='w-1/3 inline-flex items-center p-4 gap-2 rounded-md bg-base-button text-product-purple'>
-              <CreditCard />
-              <span className='text-xs'>CARTÃO DE CRÉDITO</span>
-            </button>
-            <button className='w-1/3 inline-flex items-center p-4 gap-2 rounded-md bg-base-button text-product-purple'>
-              <Bank />
-              <span className='text-xs'>CARTÃO DE DÉBITO</span>
-            </button>
-            <button className='w-1/3 inline-flex items-center p-4 gap-2 rounded-md bg-base-button text-product-purple'>
-              <Money />
-              <span className='text-xs'>DINHEIRO</span>
-            </button>
+            {creditCardButton()}
+            {debitCardButton()}
+            {moneyButton()}
           </div>
         </div>
       </section>
