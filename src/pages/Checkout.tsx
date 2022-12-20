@@ -1,7 +1,5 @@
 import { MapPinLine } from 'phosphor-react'
 import { CurrencyDollar } from 'phosphor-react'
-import { Bank } from 'phosphor-react'
-import { Money } from 'phosphor-react'
 
 import { CheckoutCoffeeCard } from '../components/CheckoutCoffeeCard'
 
@@ -9,11 +7,8 @@ import { NavLink } from 'react-router-dom'
 import { useContext } from 'react'
 import { PurchaseInfoContext } from '../context/PurchaseInfoContext'
 
-
-
 export function Checkout() {
   const { creditCardButton, debitCardButton, moneyButton } = useContext(PurchaseInfoContext)
-
 
   return (
     <div className='grid grid-cols-[60%_40%] gap-8'>

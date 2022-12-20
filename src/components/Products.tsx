@@ -13,10 +13,7 @@ import cubano from '../assets/coffees/cubano.svg'
 import havaiano from '../assets/coffees/havaiano.svg'
 import arabe from '../assets/coffees/arabe.svg'
 import irlandes from '../assets/coffees/irlandes.svg'
-
-import { CoffeeCard1Type } from './CoffeeCard'
-import { CoffeeCard2Type } from './CoffeeCard'
-import { CoffeeCard3Type } from './CoffeeCard'
+import { CoffeeCard1Type, CoffeeCard2Type, CoffeeCard3Type } from './CoffeeCard'
 
 export function Products() {
   return (

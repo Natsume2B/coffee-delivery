@@ -1,6 +1,7 @@
 import { ShoppingCart } from "phosphor-react"
 import { Plus } from 'phosphor-react'
 import { Minus } from 'phosphor-react'
+import { useState } from "react"
 
 interface CoffeeProductProps {
   src: string,
@@ -14,6 +15,20 @@ interface CoffeeProductProps {
 
 
 export function CoffeeCard1Type({ src, coffeeType, name, about, price }: CoffeeProductProps) {
+  const [productCount, setProductCount] = useState(0)
+
+  function increaseProductCount() {
+    if (productCount >= 0) {
+      setProductCount(productCount + 1)
+    }
+  }
+
+  function decreaseProductCount() {
+    if (productCount >= 1) {
+      setProductCount(productCount - 1)
+    }
+  }
+
   return (
     <div className="flex flex-col items-center text-center w-[22%] rounded-tr-[2.250rem] rounded-bl-[2.250rem] rounded-tl-md rounded-br-md bg-base-card mb-5">
       <img className="mt-[-1.45rem] mb-3" src={src} alt="" />
@@ -26,9 +41,17 @@ export function CoffeeCard1Type({ src, coffeeType, name, about, price }: CoffeeP
         <span className="text-sm mr-1">R$</span>
         <span className="font-baloo2 text-2xl mr-6"> {price}</span>
         <div className="flex gap-3 mr-2 p-2  rounded-md bg-base-button">
-          <button className="text-product-purple hover:text-product-purple-dark"><Minus weight="bold" size={14} /></button>
-          <span>1</span>
-          <button className="text-product-purple hover:text-product-purple-dark"><Plus weight="bold" size={14} /></button>
+          <button
+            className="text-product-purple hover:text-product-purple-dark"
+            onClick={decreaseProductCount}>
+            <Minus weight="bold" size={14} />
+          </button>
+          <span>{productCount as number}</span>
+          <button
+            className="text-product-purple hover:text-product-purple-dark"
+            onClick={increaseProductCount}>
+            <Plus weight="bold" size={14} />
+          </button>
         </div>
         <button className="rounded-md text-base-card p-2 bg-product-purple-dark hover:bg-product-purple"><ShoppingCart weight="fill" size={22} /></button>
       </div>
@@ -37,6 +60,20 @@ export function CoffeeCard1Type({ src, coffeeType, name, about, price }: CoffeeP
 }
 
 export function CoffeeCard2Type({ src, coffeeType, coffeeType2, name, about, price }: CoffeeProductProps) {
+  const [productCount, setProductCount] = useState(0)
+
+  function increaseProductCount() {
+    if (productCount >= 0) {
+      setProductCount(productCount + 1)
+    }
+  }
+
+  function decreaseProductCount() {
+    if (productCount >= 1) {
+      setProductCount(productCount - 1)
+    }
+  }
+
   return (
     <div className="flex flex-col items-center text-center w-[22%] rounded-tr-[2.250rem] rounded-bl-[2.250rem] rounded-tl-md rounded-br-md bg-base-card mb-5">
       <img className="mt-[-1.45rem] mb-3" src={src} alt="" />
@@ -50,9 +87,17 @@ export function CoffeeCard2Type({ src, coffeeType, coffeeType2, name, about, pri
         <span className="text-sm mr-1">R$</span>
         <span className="font-baloo2 text-2xl mr-6"> {price}</span>
         <div className="flex gap-3 mr-2 p-2  rounded-md bg-base-button">
-          <button className="text-product-purple hover:text-product-purple-dark"><Minus weight="bold" size={14} /></button>
-          <span>1</span>
-          <button className="text-product-purple hover:text-product-purple-dark"><Plus weight="bold" size={14} /></button>
+          <button
+            className="text-product-purple hover:text-product-purple-dark"
+            onClick={decreaseProductCount}>
+            <Minus weight="bold" size={14} />
+          </button>
+          <span>{productCount}</span>
+          <button
+            className="text-product-purple hover:text-product-purple-dark"
+            onClick={increaseProductCount}>
+            <Plus weight="bold" size={14} />
+          </button>
         </div>
         <button className="rounded-md text-base-card p-2 bg-product-purple-dark hover:bg-product-purple"><ShoppingCart weight="fill" size={22} /></button>
       </div>
@@ -61,6 +106,21 @@ export function CoffeeCard2Type({ src, coffeeType, coffeeType2, name, about, pri
 }
 
 export function CoffeeCard3Type({ src, coffeeType, coffeeType2, coffeeType3, name, about, price }: CoffeeProductProps) {
+  const [productCount, setProductCount] = useState(0)
+
+  function increaseProductCount() {
+    if (productCount >= 0) {
+      setProductCount(productCount + 1)
+    }
+  }
+
+  function decreaseProductCount() {
+    if (productCount >= 1) {
+      setProductCount(productCount - 1)
+    }
+  }
+
+
   return (
     <div className="flex flex-col items-center text-center w-[22%] rounded-tr-[2.250rem] rounded-bl-[2.250rem] rounded-tl-md rounded-br-md bg-base-card mb-5">
       <img className="mt-[-1.45rem] mb-3" src={src} alt="" />
@@ -75,9 +135,17 @@ export function CoffeeCard3Type({ src, coffeeType, coffeeType2, coffeeType3, nam
         <span className="text-sm mr-1">R$</span>
         <span className="font-baloo2 text-2xl mr-6"> {price}</span>
         <div className="flex gap-3 mr-2 p-2  rounded-md bg-base-button">
-          <button className="text-product-purple hover:text-product-purple-dark"><Minus weight="bold" size={14} /></button>
-          <span>1</span>
-          <button className="text-product-purple hover:text-product-purple-dark"><Plus weight="bold" size={14} /></button>
+          <button
+            className="text-product-purple hover:text-product-purple-dark"
+            onClick={decreaseProductCount}>
+            <Minus weight="bold" size={14} />
+          </button>
+          <span>{productCount}</span>
+          <button
+            className="text-product-purple hover:text-product-purple-dark"
+            onClick={increaseProductCount}>
+            <Plus weight="bold" size={14} />
+          </button>
         </div>
         <button className="rounded-md text-base-card p-2 bg-product-purple-dark hover:bg-product-purple"><ShoppingCart weight="fill" size={22} /></button>
       </div>
