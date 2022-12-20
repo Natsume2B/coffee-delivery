@@ -2,7 +2,6 @@ import { ShoppingCart } from "phosphor-react"
 import { Plus } from 'phosphor-react'
 import { Minus } from 'phosphor-react'
 import { useState } from "react"
-import { Type1 } from "./CoffeeTypes"
 
 interface CoffeeProductProps {
   src: string,
