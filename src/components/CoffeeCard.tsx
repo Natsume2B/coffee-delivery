@@ -1,11 +1,12 @@
 import { ShoppingCart } from "phosphor-react"
 import { Plus } from 'phosphor-react'
 import { Minus } from 'phosphor-react'
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { PurchaseInfoContext } from "../context/PurchaseInfoContext"
 
 interface CoffeeProductProps {
   src: string,
-  numberOfType: string,
+  numberOfType: number,
   coffeeType1: string,
   coffeeType2?: string,
   coffeeType3?: string,
@@ -15,29 +16,33 @@ interface CoffeeProductProps {
 }
 
 
-export function CoffeeCard1Type({ src, numberOfType, coffeeType1, coffeeType2, coffeeType3, name, about, price }: CoffeeProductProps) {
+export function CoffeeCard({ src, numberOfType, coffeeType1, coffeeType2, coffeeType3, name, about, price }: CoffeeProductProps) {
+
+  const { addCartCount, increaseTotalProductCount, decreaseTotalProductCount } = useContext(PurchaseInfoContext)
   const [productCount, setProductCount] = useState(0)
 
   function increaseProductCount() {
     if (productCount >= 0) {
       setProductCount(productCount + 1)
+      increaseTotalProductCount()
     }
   }
 
   function decreaseProductCount() {
     if (productCount >= 1) {
       setProductCount(productCount - 1)
+      decreaseTotalProductCount()
     }
   }
 
   function coffeeTypeText() {
-    if (numberOfType === '1') {
+    if (numberOfType === 1) {
       return (
         <div className="flex flex-row gap-1 mb-4">
           <span className="text-[10px] font-bold p-1 px-2 rounded-full bg-product-yellow-light text-product-yellow-dark">{coffeeType1}</span>
         </div>
       )
-    } else if (numberOfType === '2') {
+    } else if (numberOfType === 2) {
       return (
         <div className="flex flex-row gap-1 mb-4">
           <span className="text-[10px] font-bold p-1 px-2 rounded-full bg-product-yellow-light text-product-yellow-dark">{coffeeType1}</span>
@@ -45,7 +50,7 @@ export function CoffeeCard1Type({ src, numberOfType, coffeeType1, coffeeType2, c
         </div>
       )
 
-    } else if (numberOfType === '3') {
+    } else if (numberOfType === 3) {
       return (
         <div className="flex flex-row gap-1 mb-4">
           <span className="text-[10px] font-bold p-1 px-2 rounded-full bg-product-yellow-light text-product-yellow-dark">{coffeeType1}</span>
@@ -53,7 +58,6 @@ export function CoffeeCard1Type({ src, numberOfType, coffeeType1, coffeeType2, c
           <span className="text-[10px] font-bold p-1 px-2 rounded-full bg-product-yellow-light text-product-yellow-dark">{coffeeType3}</span>
         </div>
       )
-
     }
   }
 
@@ -79,7 +83,12 @@ export function CoffeeCard1Type({ src, numberOfType, coffeeType1, coffeeType2, c
             <Plus weight="bold" size={14} />
           </button>
         </div>
-        <button className="rounded-md text-base-card p-2 bg-product-purple-dark hover:bg-product-purple"><ShoppingCart weight="fill" size={22} /></button>
+        <button
+          className="rounded-md text-base-card p-2 bg-product-purple-dark hover:bg-product-purple"
+          onClick={addCartCount}
+        >
+          <ShoppingCart weight="fill" size={22} />
+        </button>
       </div>
     </div>
   )

@@ -2,8 +2,22 @@ import coffee from '../assets/coffee-delivery-logo.svg'
 import { MapPin, ShoppingCart } from 'phosphor-react'
 
 import { NavLink } from 'react-router-dom'
+import { useContext } from 'react'
+import { PurchaseInfoContext } from '../context/PurchaseInfoContext'
 
 export function Header() {
+  const { cartCount } = useContext(PurchaseInfoContext)
+
+  function showCartCount() {
+    if (cartCount <= 0) {
+      return <p></p>
+    } else {
+      return <span
+        className='text-xs font-bold text-white bg-product-yellow-dark rounded-full py-1 px-2'>
+        {cartCount}
+      </span>
+    }
+  }
   return (
     <header>
       <nav className='flex justify-between items-center mt-8 mb-24 '>
@@ -22,9 +36,12 @@ export function Header() {
           <NavLink
             to="/Checkout"
             title='Checkout'
-            className='text-product-yellow-dark bg-product-yellow-light p-2 rounded-md cursor-pointer'
+            className='text-product-yellow-dark bg-product-yellow-light p-2 rounded-md cursor-pointer flex '
           >
             <ShoppingCart size={22} weight="fill" />
+            <div className='absolute ml-4 mt-[-1rem]'>
+              {showCartCount()}
+            </div>
           </NavLink>
         </div>
       </nav>
