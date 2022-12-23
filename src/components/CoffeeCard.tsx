@@ -18,21 +18,36 @@ interface CoffeeProductProps {
 
 export function CoffeeCard({ src, numberOfTypes, coffeeType1, coffeeType2, coffeeType3, name, about, price }: CoffeeProductProps) {
 
-  const { } = useContext(PurchaseInfoContext)
+  const { increaseTotalQuantity,
+    decreaseTotalQuantity, addCartCount } = useContext(PurchaseInfoContext)
+
   const [quantity, setQuantity] = useState(0)
+
+  const [cart, setCart] = useState([{}])
+
+  function handleCart() {
+    const product = [{
+      name: name,
+      price: price
+    }]
+    setCart([...cart, product])
+    addCartCount()
+  }
 
   function increaseQuantity() {
     if (quantity >= 0) {
       setQuantity(quantity + 1)
+      increaseTotalQuantity()
     }
-    console.log(name)
   }
 
   function decreaseQuantity() {
-    if (quantity >= 1) {
+    if (quantity >= 0) {
       setQuantity(quantity - 1)
+      decreaseTotalQuantity()
     }
   }
+
 
   function coffeeTypeText() {
     if (numberOfTypes === 1) {
@@ -84,6 +99,7 @@ export function CoffeeCard({ src, numberOfTypes, coffeeType1, coffeeType2, coffe
         </div>
         <button
           className="rounded-md text-base-card p-2 bg-product-purple-dark hover:bg-product-purple"
+          onClick={handleCart}
         >
           <ShoppingCart weight="fill" size={22} />
         </button>

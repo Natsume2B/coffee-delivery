@@ -15,6 +15,10 @@ export function PurchaseInfoContextProvider({
   children,
 }: PurchaseInfoContextProviderProps) {
 
+
+  const [totalQuantity, setTotalQuantity] = useState(0)
+  const [cartCount, setCartCount] = useState(0)
+
   const [firstChecked, setfirstChecked] = useState(true)
   const [secondChecked, setSecondChecked] = useState(false)
   const [thirdChecked, setThirdChecked] = useState(false)
@@ -131,6 +135,22 @@ export function PurchaseInfoContextProvider({
 
   }
 
+  function increaseTotalQuantity() {
+    if (totalQuantity >= 0) {
+      setTotalQuantity(totalQuantity + 1)
+    }
+  }
+
+  function decreaseTotalQuantity() {
+    if (totalQuantity >= 0) {
+      setTotalQuantity(totalQuantity - 1)
+    }
+  }
+
+  function addCartCount() {
+    setCartCount(totalQuantity)
+  }
+
   function checkFirstButton() {
     setfirstChecked(true)
     setSecondChecked(false)
@@ -191,8 +211,6 @@ export function PurchaseInfoContextProvider({
     }
   }
 
-
-
   return (
     <PurchaseInfoContext.Provider
       value={{
@@ -200,6 +218,12 @@ export function PurchaseInfoContextProvider({
         debitCardButton,
         moneyButton,
         productsInfo,
+        totalQuantity,
+        setTotalQuantity,
+        increaseTotalQuantity,
+        decreaseTotalQuantity,
+        addCartCount,
+        cartCount,
       }}
     >
       {children}
