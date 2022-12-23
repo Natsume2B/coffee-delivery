@@ -14,7 +14,7 @@ export function Header() {
     } else {
       return <span
         className='text-xs font-bold text-white bg-product-yellow-dark rounded-full py-1 px-2'>
-        {cartCount}
+        0
       </span>
     }
   }
