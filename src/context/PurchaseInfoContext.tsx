@@ -18,6 +18,7 @@ export function PurchaseInfoContextProvider({
 
   const [totalQuantity, setTotalQuantity] = useState(0)
   const [cartCount, setCartCount] = useState(0)
+  const [cart, setCart] = useState([])
 
   const [firstChecked, setfirstChecked] = useState(true)
   const [secondChecked, setSecondChecked] = useState(false)
@@ -25,28 +26,32 @@ export function PurchaseInfoContextProvider({
 
   const productsInfo = {
     expressoTradicional: {
-      name: 'Expresso Tradicional',
+      name: 'expressoTradicional',
+      nameTxt: 'Expresso Tradicional',
       numberOfTypes: 1,
       coffeeType1: 'TRADICIONAL',
       about: 'O tradicional café feito com água quente e grãos moídos',
       price: '9,90',
     },
     expressoAmericano: {
-      name: 'Expresso Ameriano',
+      name: 'expressoAmericano',
+      nameTxt: 'Expresso Ameriano',
       numberOfTypes: 1,
       coffeeType1: 'TRADICIONAL',
       about: 'Expresso diluído, menos intenso que o tradicional',
       price: '9,90',
     },
     expressoCremoso: {
-      name: 'Expresso Cremoso',
+      name: 'expressoCremoso',
+      nameTxt: 'Expresso Cremoso',
       numberOfTypes: 1,
       coffeeType1: 'TRADICIONAL',
       about: 'Café expresso tradicional com espuma cremosa',
       price: '9,90',
     },
     expressoGelado: {
-      name: 'Expresso Gelado',
+      name: 'expressoGelado',
+      nameTxt: 'Expresso Gelado',
       numberOfTypes: 2,
       coffeeType1: 'TRADICIONAL',
       coffeeType2: 'GELADO',
@@ -54,7 +59,8 @@ export function PurchaseInfoContextProvider({
       price: '9,90',
     },
     cafeComLeite: {
-      name: 'Café com Leite',
+      name: 'cafeComLeite',
+      nameTxt: 'Café com Leite',
       numberOfTypes: 2,
       coffeeType1: 'TRADICIONAL',
       coffeeType2: 'COM LEITE',
@@ -62,7 +68,8 @@ export function PurchaseInfoContextProvider({
       price: '9,90',
     },
     latte: {
-      name: 'Latte',
+      name: 'latte',
+      nameTxt: 'Latte',
       numberOfTypes: 2,
       coffeeType1: 'TRADICIONAL',
       coffeeType2: 'COM LEITE',
@@ -70,7 +77,8 @@ export function PurchaseInfoContextProvider({
       price: '9,90',
     },
     capuccino: {
-      name: 'Capuccino',
+      name: 'capuccino',
+      nameTxt: 'Capuccino',
       numberOfTypes: 2,
       coffeeType1: 'TRADICIONAL',
       coffeeType2: 'COM LEITE',
@@ -78,7 +86,8 @@ export function PurchaseInfoContextProvider({
       price: '9,90',
     },
     macchiato: {
-      name: 'Macchiato',
+      name: 'macchiato',
+      nameTxt: 'Macchiato',
       numberOfTypes: 2,
       coffeeType1: 'TRADICIONAL',
       coffeeType2: 'COM LEITE',
@@ -86,7 +95,8 @@ export function PurchaseInfoContextProvider({
       price: '9,90',
     },
     mocaccino: {
-      name: 'Mocaccino',
+      name: 'mocaccino',
+      nameTxt: 'Mocaccino',
       numberOfTypes: 2,
       coffeeType1: 'TRADICIONAL',
       coffeeType2: 'COM LEITE',
@@ -94,7 +104,8 @@ export function PurchaseInfoContextProvider({
       price: '9,90',
     },
     chocolateQuente: {
-      name: 'Chocolate Quente',
+      name: 'chocolateQuente',
+      nameTxt: 'Chocolate Quente',
       numberOfTypes: 2,
       coffeeType1: 'ESPECIAL COM LEITE',
       coffeeType2: 'COM LEITE',
@@ -102,7 +113,8 @@ export function PurchaseInfoContextProvider({
       price: '9,90',
     },
     cubano: {
-      name: 'Cubano',
+      name: 'cubano',
+      nameTxt: 'Cubano',
       numberOfTypes: 3,
       coffeeType1: 'ESPECIAL',
       coffeeType2: 'ALCOÓLICO',
@@ -111,21 +123,24 @@ export function PurchaseInfoContextProvider({
       price: '9,90',
     },
     havaiano: {
-      name: 'Havaiano',
+      name: 'havaiano',
+      nameTxt: 'Havaiano',
       numberOfTypes: 1,
       coffeeType1: 'ESPECIAL',
       about: 'Bebida adocicada preparada com café e leite de coco',
       price: '9,90',
     },
     arabe: {
-      name: 'Árabe',
+      name: 'arabe',
+      nameTxt: 'Árabe',
       numberOfTypes: 1,
       coffeeType1: 'ESPECIAL',
       about: 'Bebida preparada com grãos de café árabe e especiarias',
       price: '9,90',
     },
     irlandes: {
-      name: 'Irlandês',
+      name: 'irlandes',
+      nameTxt: 'Irlandês',
       numberOfTypes: 2,
       coffeeType1: 'ESPECIAL',
       coffeeType2: 'ALCOÓLICO',
@@ -133,22 +148,6 @@ export function PurchaseInfoContextProvider({
       price: '9,90',
     },
 
-  }
-
-  function increaseTotalQuantity() {
-    if (totalQuantity >= 0) {
-      setTotalQuantity(totalQuantity + 1)
-    }
-  }
-
-  function decreaseTotalQuantity() {
-    if (totalQuantity >= 0) {
-      setTotalQuantity(totalQuantity - 1)
-    }
-  }
-
-  function addCartCount() {
-    setCartCount(totalQuantity)
   }
 
   function checkFirstButton() {
@@ -168,6 +167,24 @@ export function PurchaseInfoContextProvider({
     setSecondChecked(false)
     setThirdChecked(true)
   }
+
+  function test() {
+    function searchName(name, myArray) {
+      for (let i = myArray.length - 1; i >= 0; i--) {
+        if (myArray[i].name === name) {
+          return myArray[i]
+        }
+      }
+
+    }
+    
+   
+    
+
+    const result = searchName('expressoTradicional', cart)
+    console.log(JSON.stringify(cart))
+  }
+
 
   function creditCardButton() {
     if (firstChecked === false) {
@@ -220,10 +237,11 @@ export function PurchaseInfoContextProvider({
         productsInfo,
         totalQuantity,
         setTotalQuantity,
-        increaseTotalQuantity,
-        decreaseTotalQuantity,
-        addCartCount,
         cartCount,
+        cart,
+        setCart,
+        test,
+
       }}
     >
       {children}

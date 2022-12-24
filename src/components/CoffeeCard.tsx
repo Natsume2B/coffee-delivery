@@ -5,46 +5,48 @@ import { useContext, useState } from "react"
 import { PurchaseInfoContext } from "../context/PurchaseInfoContext"
 
 interface CoffeeProductProps {
+  name: string,
   src: string,
   numberOfTypes: number,
   coffeeType1: string,
   coffeeType2?: string,
   coffeeType3?: string,
-  name: string,
+  nameTxt: string,
   about: string,
   price: string,
 }
 
 
-export function CoffeeCard({ src, numberOfTypes, coffeeType1, coffeeType2, coffeeType3, name, about, price }: CoffeeProductProps) {
+export function CoffeeCard({ name, src, numberOfTypes, coffeeType1, coffeeType2, coffeeType3, nameTxt, about, price }: CoffeeProductProps) {
 
-  const { increaseTotalQuantity,
-    decreaseTotalQuantity, addCartCount } = useContext(PurchaseInfoContext)
+  const { setTotalQuantity, cart, setCart } = useContext(PurchaseInfoContext)
 
   const [quantity, setQuantity] = useState(0)
 
-  const [cart, setCart] = useState([{}])
+  const product = {
+    name: name,
+    nameTxt: nameTxt,
+    price: price,
+    quantity: quantity + 1,
+    src: src
+  }
 
   function handleCart() {
-    const product = [{
-      name: name,
-      price: price
-    }]
-    setCart([...cart, product])
-    addCartCount()
+    setTotalQuantity(cart.length)
+    console.log(cart)
+    console.log(cart.length)
   }
 
   function increaseQuantity() {
     if (quantity >= 0) {
       setQuantity(quantity + 1)
-      increaseTotalQuantity()
+      setCart([...cart, product])
     }
   }
 
   function decreaseQuantity() {
-    if (quantity >= 0) {
+    if (quantity >= 1) {
       setQuantity(quantity - 1)
-      decreaseTotalQuantity()
     }
   }
 
@@ -79,7 +81,7 @@ export function CoffeeCard({ src, numberOfTypes, coffeeType1, coffeeType2, coffe
     <div className="flex flex-col items-center text-center w-[22.75%] rounded-tr-[2.250rem] rounded-bl-[2.250rem] rounded-tl-md rounded-br-md bg-base-card mb-5">
       <img className="mt-[-1.45rem] mb-3" src={src} alt="" />
       {coffeeTypeText()}
-      <h1 className="font-baloo2 text-xl mb-2">{name}</h1>
+      <h1 className="font-baloo2 text-xl mb-2">{nameTxt}</h1>
       <p className="text-sm text-base-label mb-8 px-2">{about}</p>
       <div className="flex items-center mb-5">
         <span className="text-sm mr-1">R$</span>

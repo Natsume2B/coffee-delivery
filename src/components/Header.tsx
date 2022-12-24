@@ -6,15 +6,15 @@ import { useContext } from 'react'
 import { PurchaseInfoContext } from '../context/PurchaseInfoContext'
 
 export function Header() {
-  const { cartCount } = useContext(PurchaseInfoContext)
+  const { totalQuantity } = useContext(PurchaseInfoContext)
 
-  function showCartCount() {
-    if (cartCount <= 0) {
+  function showTotalQuantity() {
+    if (totalQuantity <= 0) {
       return <p></p>
     } else {
       return <span
         className='text-xs font-bold text-white bg-product-yellow-dark rounded-full py-1 px-2'>
-        {cartCount}
+        {totalQuantity}
       </span>
     }
   }
@@ -40,7 +40,7 @@ export function Header() {
           >
             <ShoppingCart size={22} weight="fill" />
             <div className='absolute ml-4 mt-[-1rem]'>
-              {showCartCount()}
+              {showTotalQuantity()}
             </div>
           </NavLink>
         </div>

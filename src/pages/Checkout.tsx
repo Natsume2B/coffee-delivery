@@ -8,7 +8,7 @@ import { useContext } from 'react'
 import { PurchaseInfoContext } from '../context/PurchaseInfoContext'
 
 export function Checkout() {
-  const { creditCardButton, debitCardButton, moneyButton } = useContext(PurchaseInfoContext)
+  const { creditCardButton, debitCardButton, moneyButton, test } = useContext(PurchaseInfoContext)
 
   return (
     <div className='grid grid-cols-[60%_40%] gap-8'>
@@ -110,12 +110,11 @@ export function Checkout() {
 
       <section>
         <header className='font-baloo2 mb-4 text-lg'>
-          <h1>Cafés selecionados</h1>
+          <h1 onClick={test}>Cafés selecionados</h1>
         </header>
         <div className='items-center rounded-tr-[2.750rem] rounded-bl-[2.750rem] rounded-tl-md rounded-br-md bg-base-card pb-10'>
           <div>
             <div className='flex flex-col px-10 mb-6'>
-              <CheckoutCoffeeCard />
               <CheckoutCoffeeCard />
             </div>
           </div>
