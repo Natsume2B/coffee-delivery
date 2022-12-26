@@ -11,13 +11,12 @@ interface CoffeeProductProps {
   coffeeType1: string,
   coffeeType2?: string,
   coffeeType3?: string,
-  nameTxt: string,
   about: string,
   price: string,
 }
 
 
-export function CoffeeCard({ name, src, numberOfTypes, coffeeType1, coffeeType2, coffeeType3, nameTxt, about, price }: CoffeeProductProps) {
+export function CoffeeCard({ name, src, numberOfTypes, coffeeType1, coffeeType2, coffeeType3, about, price }: CoffeeProductProps) {
 
   const { setTotalQuantity, cart, setCart } = useContext(PurchaseInfoContext)
 
@@ -25,7 +24,6 @@ export function CoffeeCard({ name, src, numberOfTypes, coffeeType1, coffeeType2,
 
   const product = {
     name: name,
-    nameTxt: nameTxt,
     price: price,
     quantity: quantity + 1,
     src: src
@@ -81,7 +79,7 @@ export function CoffeeCard({ name, src, numberOfTypes, coffeeType1, coffeeType2,
     <div className="flex flex-col items-center text-center w-[22.75%] rounded-tr-[2.250rem] rounded-bl-[2.250rem] rounded-tl-md rounded-br-md bg-base-card mb-5">
       <img className="mt-[-1.45rem] mb-3" src={src} alt="" />
       {coffeeTypeText()}
-      <h1 className="font-baloo2 text-xl mb-2">{nameTxt}</h1>
+      <h1 className="font-baloo2 text-xl mb-2">{name}</h1>
       <p className="text-sm text-base-label mb-8 px-2">{about}</p>
       <div className="flex items-center mb-5">
         <span className="text-sm mr-1">R$</span>

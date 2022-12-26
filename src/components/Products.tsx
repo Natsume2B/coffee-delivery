@@ -13,150 +13,132 @@ import havaiano from '../assets/coffees/havaiano.svg'
 import arabe from '../assets/coffees/arabe.svg'
 import irlandes from '../assets/coffees/irlandes.svg'
 import { CoffeeCard } from './CoffeeCard'
-import { useContext } from 'react'
-import { PurchaseInfoContext } from '../context/PurchaseInfoContext'
 
 export function Products() {
-  const { productsInfo } = useContext(PurchaseInfoContext)
 
   return (
     <div className='flex flex-wrap gap-8 '>
       <CoffeeCard
-        name={productsInfo.expressoTradicional.name}
-        nameTxt={productsInfo.expressoTradicional.nameTxt}
+        name='Expresso Tradicional'
         src={expressoTradicional}
-        numberOfTypes={productsInfo.expressoTradicional.numberOfTypes}
-        coffeeType1={productsInfo.expressoTradicional.coffeeType1}
-        about={productsInfo.expressoTradicional.about}
-        price={productsInfo.expressoTradicional.price}
+        numberOfTypes={1}
+        coffeeType1='TRADICIONAL'
+        about='O tradicional café feito com água quente e grãos moídos'
+        price='9,90'
       />
       <CoffeeCard
-        name={productsInfo.expressoAmericano.name}
-        nameTxt={productsInfo.expressoAmericano.nameTxt}
+        name='Expresso Americano'
         src={expressoAmericano}
-        numberOfTypes={productsInfo.expressoAmericano.numberOfTypes}
-        coffeeType1={productsInfo.expressoAmericano.coffeeType1}
-        about={productsInfo.expressoAmericano.about}
-        price={productsInfo.expressoAmericano.price}
+        numberOfTypes={1}
+        coffeeType1='TRADICIONAL'
+        about='Expresso diluído, menos intenso que o tradicional'
+        price='9,90'
       />
       <CoffeeCard
-        name={productsInfo.expressoCremoso.name}
-        nameTxt={productsInfo.expressoCremoso.nameTxt}
+        name='expressoCremoso'
         src={expressoCremoso}
-        numberOfTypes={productsInfo.expressoCremoso.numberOfTypes}
-        coffeeType1={productsInfo.expressoCremoso.coffeeType1}
-        about={productsInfo.expressoCremoso.about}
-        price={productsInfo.expressoCremoso.price}
+        numberOfTypes={1}
+        coffeeType1='TRADICIONAL'
+        about='Café expresso tradicional com espuma cremosa'
+        price='9,90'
       />
       <CoffeeCard
-        name={productsInfo.expressoGelado.name}
-        nameTxt={productsInfo.expressoGelado.nameTxt}
+        name='expressoGelado'
         src={expressoGelado}
-        numberOfTypes={productsInfo.expressoGelado.numberOfTypes}
-        coffeeType1={productsInfo.expressoGelado.coffeeType1}
-        coffeeType2={productsInfo.expressoGelado.coffeeType2}
-        about={productsInfo.expressoGelado.about}
-        price={productsInfo.expressoGelado.price}
+        numberOfTypes={2}
+        coffeeType1='TRADICIONAL'
+        coffeeType2='GELADO'
+        about='Bebida preparada com café expresso e cubos de gelo'
+        price='990'
       />
       <CoffeeCard
-        name={productsInfo.cafeComLeite.name}
-        nameTxt={productsInfo.cafeComLeite.nameTxt}
+        name='cafeComLeite'
         src={cafeComLeite}
-        numberOfTypes={productsInfo.cafeComLeite.numberOfTypes}
-        coffeeType1={productsInfo.cafeComLeite.coffeeType1}
-        coffeeType2={productsInfo.cafeComLeite.coffeeType2}
-        about={productsInfo.cafeComLeite.about}
-        price={productsInfo.cafeComLeite.price}
+        numberOfTypes={2}
+        coffeeType1='TRADICIONAL'
+        coffeeType2='COM LEITE'
+        about='Meio a meio de expresso tradicional com leite vaporizado'
+        price='990'
       />
       <CoffeeCard
-        name={productsInfo.latte.name}
-        nameTxt={productsInfo.latte.nameTxt}
+        name='latte'
         src={latte}
-        numberOfTypes={productsInfo.latte.numberOfTypes}
-        coffeeType1={productsInfo.latte.coffeeType1}
-        coffeeType2={productsInfo.latte.coffeeType2}
-        about={productsInfo.latte.about}
-        price={productsInfo.latte.price}
+        numberOfTypes={2}
+        coffeeType1='TRADICIONAL'
+        coffeeType2='COM LEITE'
+        about='Uma dose de café expresso com o dobro de leite e espuma cremosa'
+        price='990'
       />
       <CoffeeCard
-        name={productsInfo.capuccino.name}
-        nameTxt={productsInfo.capuccino.nameTxt}
+        name='capuccino'
         src={capuccino}
-        numberOfTypes={productsInfo.capuccino.numberOfTypes}
-        coffeeType1={productsInfo.capuccino.coffeeType1}
-        coffeeType2={productsInfo.capuccino.coffeeType2}
-        about={productsInfo.capuccino.about}
-        price={productsInfo.capuccino.price}
+        numberOfTypes={2}
+        coffeeType1='TRADICIONAL'
+        coffeeType2='COM LEITE'
+        about='Bebida com canela feita de doses iguais de café leite e espuma'
+        price='990'
       />
       <CoffeeCard
-        name={productsInfo.macchiato.name}
-        nameTxt={productsInfo.macchiato.nameTxt}
+        name='macchiato'
         src={macchiato}
-        numberOfTypes={productsInfo.macchiato.numberOfTypes}
-        coffeeType1={productsInfo.macchiato.coffeeType1}
-        coffeeType2={productsInfo.macchiato.coffeeType2}
-        about={productsInfo.macchiato.about}
-        price={productsInfo.macchiato.price}
+        numberOfTypes={2}
+        coffeeType1='TRADICIONAL'
+        coffeeType2='COM LEITE'
+        about='Café expresso misturado com um pouco de leite quente e espuma'
+        price='990'
       />
       <CoffeeCard
-        name={productsInfo.mocaccino.name}
-        nameTxt={productsInfo.mocaccino.nameTxt}
+        name='mocaccino'
         src={mocaccino}
-        numberOfTypes={productsInfo.mocaccino.numberOfTypes}
-        coffeeType1={productsInfo.mocaccino.coffeeType1}
-        coffeeType2={productsInfo.mocaccino.coffeeType2}
-        about={productsInfo.mocaccino.about}
-        price={productsInfo.mocaccino.price}
+        numberOfTypes={2}
+        coffeeType1='TRADICIONAL'
+        coffeeType2='COM LEITE'
+        about='Café expresso com calda de chocolate pouco leite e espuma'
+        price='990'
       />
       <CoffeeCard
-        name={productsInfo.chocolateQuente.name}
-        nameTxt={productsInfo.chocolateQuente.nameTxt}
+        name='chocolateQuente'
         src={chocolateQuente}
-        numberOfTypes={productsInfo.chocolateQuente.numberOfTypes}
-        coffeeType1={productsInfo.chocolateQuente.coffeeType1}
-        coffeeType2={productsInfo.chocolateQuente.coffeeType2}
-        about={productsInfo.chocolateQuente.about}
-        price={productsInfo.chocolateQuente.price}
+        numberOfTypes={2}
+        coffeeType1='ESPECIAL COM LEITE'
+        coffeeType2='COM LEITE'
+        about='Bebida feita com chocolate dissolvido no leite quente e café'
+        price='990'
       />
       <CoffeeCard
-        name={productsInfo.cubano.name}
-        nameTxt={productsInfo.cubano.nameTxt}
+        name='cubano'
         src={cubano}
-        numberOfTypes={productsInfo.cubano.numberOfTypes}
-        coffeeType1={productsInfo.cubano.coffeeType1}
-        coffeeType2={productsInfo.cubano.coffeeType2}
-        about={productsInfo.cubano.about}
-        price={productsInfo.cubano.price}
+        numberOfTypes={3}
+        coffeeType1='ESPECIAL'
+        coffeeType2='ALCOÓLICO'
+        coffeeType3='GELADO'
+        about='Drink gelado de café expresso com rum creme de leite e hortelã'
+        price='990'
       />
       <CoffeeCard
-        name={productsInfo.havaiano.name}
-        nameTxt={productsInfo.havaiano.nameTxt}
+        name='havaiano'
         src={havaiano}
-        numberOfTypes={productsInfo.havaiano.numberOfTypes}
-        coffeeType1={productsInfo.havaiano.coffeeType1}
-        coffeeType2={productsInfo.havaiano.coffeeType2}
-        about={productsInfo.havaiano.about}
-        price={productsInfo.havaiano.price}
+        numberOfTypes={1}
+        coffeeType1='ESPECIAL'
+        about='Bebida adocicada preparada com café e leite de coco'
+        price='990'
       />
       <CoffeeCard
-        name={productsInfo.arabe.name}
-        nameTxt={productsInfo.arabe.nameTxt}
+        name='arabe'
         src={arabe}
-        numberOfTypes={productsInfo.arabe.numberOfTypes}
-        coffeeType1={productsInfo.arabe.coffeeType1}
-        coffeeType2={productsInfo.arabe.coffeeType2}
-        about={productsInfo.arabe.about}
-        price={productsInfo.arabe.price}
+        numberOfTypes={1}
+        coffeeType1='ESPECIAL'
+        about='Bebida preparada com grãos de café árabe e especiarias'
+        price='990'
       />
       <CoffeeCard
-        name={productsInfo.irlandes.name}
-        nameTxt={productsInfo.irlandes.nameTxt}
+        name='irlandes'
         src={irlandes}
-        numberOfTypes={productsInfo.irlandes.numberOfTypes}
-        coffeeType1={productsInfo.irlandes.coffeeType1}
-        coffeeType2={productsInfo.irlandes.coffeeType2}
-        about={productsInfo.irlandes.about}
-        price={productsInfo.irlandes.price}
+        numberOfTypes={2}
+        coffeeType1='ESPECIAL'
+        coffeeType2='ALCOÓLICO'
+        about='Bebida a base de café uísque irlandês açúcar e chantilly'
+        price='990'
       />
     </div>
   )

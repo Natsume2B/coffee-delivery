@@ -24,132 +24,6 @@ export function PurchaseInfoContextProvider({
   const [secondChecked, setSecondChecked] = useState(false)
   const [thirdChecked, setThirdChecked] = useState(false)
 
-  const productsInfo = {
-    expressoTradicional: {
-      name: 'expressoTradicional',
-      nameTxt: 'Expresso Tradicional',
-      numberOfTypes: 1,
-      coffeeType1: 'TRADICIONAL',
-      about: 'O tradicional café feito com água quente e grãos moídos',
-      price: '9,90',
-    },
-    expressoAmericano: {
-      name: 'expressoAmericano',
-      nameTxt: 'Expresso Ameriano',
-      numberOfTypes: 1,
-      coffeeType1: 'TRADICIONAL',
-      about: 'Expresso diluído, menos intenso que o tradicional',
-      price: '9,90',
-    },
-    expressoCremoso: {
-      name: 'expressoCremoso',
-      nameTxt: 'Expresso Cremoso',
-      numberOfTypes: 1,
-      coffeeType1: 'TRADICIONAL',
-      about: 'Café expresso tradicional com espuma cremosa',
-      price: '9,90',
-    },
-    expressoGelado: {
-      name: 'expressoGelado',
-      nameTxt: 'Expresso Gelado',
-      numberOfTypes: 2,
-      coffeeType1: 'TRADICIONAL',
-      coffeeType2: 'GELADO',
-      about: 'Bebida preparada com café expresso e cubos de gelo',
-      price: '9,90',
-    },
-    cafeComLeite: {
-      name: 'cafeComLeite',
-      nameTxt: 'Café com Leite',
-      numberOfTypes: 2,
-      coffeeType1: 'TRADICIONAL',
-      coffeeType2: 'COM LEITE',
-      about: 'Meio a meio de expresso tradicional com leite vaporizado',
-      price: '9,90',
-    },
-    latte: {
-      name: 'latte',
-      nameTxt: 'Latte',
-      numberOfTypes: 2,
-      coffeeType1: 'TRADICIONAL',
-      coffeeType2: 'COM LEITE',
-      about: 'Uma dose de café expresso com o dobro de leite e espuma cremosa',
-      price: '9,90',
-    },
-    capuccino: {
-      name: 'capuccino',
-      nameTxt: 'Capuccino',
-      numberOfTypes: 2,
-      coffeeType1: 'TRADICIONAL',
-      coffeeType2: 'COM LEITE',
-      about: 'Bebida com canela feita de doses iguais de café, leite e espuma',
-      price: '9,90',
-    },
-    macchiato: {
-      name: 'macchiato',
-      nameTxt: 'Macchiato',
-      numberOfTypes: 2,
-      coffeeType1: 'TRADICIONAL',
-      coffeeType2: 'COM LEITE',
-      about: 'Café expresso misturado com um pouco de leite quente e espuma',
-      price: '9,90',
-    },
-    mocaccino: {
-      name: 'mocaccino',
-      nameTxt: 'Mocaccino',
-      numberOfTypes: 2,
-      coffeeType1: 'TRADICIONAL',
-      coffeeType2: 'COM LEITE',
-      about: 'Café expresso com calda de chocolate, pouco leite e espuma',
-      price: '9,90',
-    },
-    chocolateQuente: {
-      name: 'chocolateQuente',
-      nameTxt: 'Chocolate Quente',
-      numberOfTypes: 2,
-      coffeeType1: 'ESPECIAL COM LEITE',
-      coffeeType2: 'COM LEITE',
-      about: 'Bebida feita com chocolate dissolvido no leite quente e café',
-      price: '9,90',
-    },
-    cubano: {
-      name: 'cubano',
-      nameTxt: 'Cubano',
-      numberOfTypes: 3,
-      coffeeType1: 'ESPECIAL',
-      coffeeType2: 'ALCOÓLICO',
-      coffeeType3: 'GELADO',
-      about: 'Drink gelado de café expresso com rum, creme de leite e hortelã',
-      price: '9,90',
-    },
-    havaiano: {
-      name: 'havaiano',
-      nameTxt: 'Havaiano',
-      numberOfTypes: 1,
-      coffeeType1: 'ESPECIAL',
-      about: 'Bebida adocicada preparada com café e leite de coco',
-      price: '9,90',
-    },
-    arabe: {
-      name: 'arabe',
-      nameTxt: 'Árabe',
-      numberOfTypes: 1,
-      coffeeType1: 'ESPECIAL',
-      about: 'Bebida preparada com grãos de café árabe e especiarias',
-      price: '9,90',
-    },
-    irlandes: {
-      name: 'irlandes',
-      nameTxt: 'Irlandês',
-      numberOfTypes: 2,
-      coffeeType1: 'ESPECIAL',
-      coffeeType2: 'ALCOÓLICO',
-      about: 'Bebida a base de café, uísque irlandês, açúcar e chantilly',
-      price: '9,90',
-    },
-
-  }
-
   function checkFirstButton() {
     setfirstChecked(true)
     setSecondChecked(false)
@@ -167,24 +41,6 @@ export function PurchaseInfoContextProvider({
     setSecondChecked(false)
     setThirdChecked(true)
   }
-
-  function test() {
-    function searchName(name, myArray) {
-      for (let i = myArray.length - 1; i >= 0; i--) {
-        if (myArray[i].name === name) {
-          return myArray[i]
-        }
-      }
-
-    }
-    
-   
-    
-
-    const result = searchName('expressoTradicional', cart)
-    console.log(JSON.stringify(cart))
-  }
-
 
   function creditCardButton() {
     if (firstChecked === false) {
@@ -234,14 +90,11 @@ export function PurchaseInfoContextProvider({
         creditCardButton,
         debitCardButton,
         moneyButton,
-        productsInfo,
         totalQuantity,
         setTotalQuantity,
         cartCount,
         cart,
         setCart,
-        test,
-
       }}
     >
       {children}
