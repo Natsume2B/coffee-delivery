@@ -8,11 +8,7 @@ import { useContext } from 'react'
 import { PurchaseInfoContext } from '../context/PurchaseInfoContext'
 
 export function Checkout() {
-  const { creditCardButton, debitCardButton, moneyButton, cart } = useContext(PurchaseInfoContext)
-
-  function test(){
-    console.log(cart)
-  }
+  const { creditCardButton, debitCardButton, moneyButton } = useContext(PurchaseInfoContext)
 
   return (
     <div className='grid grid-cols-[60%_40%] gap-8'>
@@ -95,7 +91,7 @@ export function Checkout() {
 
         <div className='bg-base-card p-10 rounded-md'>
           <header className='flex flex-row mb-8 gap-2'>
-            <CurrencyDollar onClick={test} size={22} className='text-product-purple' />
+            <CurrencyDollar size={22} className='text-product-purple' />
             <div>
               <h2>
                 Pagamento
@@ -119,7 +115,7 @@ export function Checkout() {
         <div className='items-center rounded-tr-[2.750rem] rounded-bl-[2.750rem] rounded-tl-md rounded-br-md bg-base-card pb-10'>
           <div>
             <div className='flex flex-col px-10 mb-6'>
-              <CheckoutCoffeeCard />
+              <CheckoutCoffeeCard  />
             </div>
           </div>
           <div className='px-10'>

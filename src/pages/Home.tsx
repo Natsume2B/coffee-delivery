@@ -4,7 +4,8 @@ import { ShoppingCart } from 'phosphor-react'
 import { Package } from 'phosphor-react'
 import { Timer } from 'phosphor-react'
 import { Coffee } from 'phosphor-react'
-import { Products } from '../components/Products'
+import { productsArray } from '../productsStore'
+import { CoffeeCard } from '../components/CoffeeCard'
 
 export function Home() {
   return (
@@ -51,7 +52,12 @@ export function Home() {
         <h1 className='font-baloo2 text-3xl mb-14'>
           Nossos cafés
         </h1>
-        <Products />
+        <div className='flex flex-wrap gap-8'>
+          {productsArray.map((product) => (
+            <CoffeeCard product={product} />
+          ))}
+        </div>
+
       </section>
     </main>
 

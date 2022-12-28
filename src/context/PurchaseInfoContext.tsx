@@ -15,11 +15,6 @@ export function PurchaseInfoContextProvider({
   children,
 }: PurchaseInfoContextProviderProps) {
 
-
-  const [totalQuantity, setTotalQuantity] = useState(0)
-  const [cartCount, setCartCount] = useState(0)
-  const [cart, setCart] = useState([])
-
   const [firstChecked, setfirstChecked] = useState(true)
   const [secondChecked, setSecondChecked] = useState(false)
   const [thirdChecked, setThirdChecked] = useState(false)
@@ -90,11 +85,6 @@ export function PurchaseInfoContextProvider({
         creditCardButton,
         debitCardButton,
         moneyButton,
-        totalQuantity,
-        setTotalQuantity,
-        cartCount,
-        cart,
-        setCart,
       }}
     >
       {children}
