@@ -4,35 +4,26 @@ import { Minus } from 'phosphor-react'
 import { useContext, useState } from "react"
 import { PurchaseInfoContext } from "../context/PurchaseInfoContext"
 
-interface CoffeeProductProps {
-  src: string,
+interface CoffeeCardProps {
+  name: string,
+  src: any,
   numberOfTypes: number,
   coffeeType1: string,
   coffeeType2?: string,
   coffeeType3?: string,
-  name: string,
   about: string,
-  price: string,
+  price: number
 }
 
+export function CoffeeCard({ name, src, numberOfTypes, coffeeType1, coffeeType2, coffeeType3, about, price }: CoffeeCardProps) {
 
-export function CoffeeCard({ src, numberOfTypes, coffeeType1, coffeeType2, coffeeType3, name, about, price }: CoffeeProductProps) {
+  const { getItemQuantity,
+    increaseCartQuantity,
+    decreaseCartQuantity,
+    currencyFormat,
+  } = useContext(PurchaseInfoContext)
 
-  const { } = useContext(PurchaseInfoContext)
-  const [quantity, setQuantity] = useState(0)
-
-  function increaseQuantity() {
-    if (quantity >= 0) {
-      setQuantity(quantity + 1)
-    }
-    console.log(name)
-  }
-
-  function decreaseQuantity() {
-    if (quantity >= 1) {
-      setQuantity(quantity - 1)
-    }
-  }
+  const quantity = getItemQuantity(name)
 
   function coffeeTypeText() {
     if (numberOfTypes === 1) {
@@ -68,17 +59,19 @@ export function CoffeeCard({ src, numberOfTypes, coffeeType1, coffeeType2, coffe
       <p className="text-sm text-base-label mb-8 px-2">{about}</p>
       <div className="flex items-center mb-5">
         <span className="text-sm mr-1">R$</span>
-        <span className="font-baloo2 text-2xl mr-6"> {price}</span>
+        <span className="font-baloo2 text-2xl mr-6">{currencyFormat(price)}</span>
         <div className="flex gap-3 mr-2 p-2  rounded-md bg-base-button">
           <button
             className="text-product-purple hover:text-product-purple-dark"
-            onClick={decreaseQuantity}>
+            onClick={() => decreaseCartQuantity(name)}
+          >
             <Minus weight="bold" size={14} />
           </button>
           <span>{quantity}</span>
           <button
             className="text-product-purple hover:text-product-purple-dark"
-            onClick={increaseQuantity}>
+            onClick={() => increaseCartQuantity(name)}
+          >
             <Plus weight="bold" size={14} />
           </button>
         </div>

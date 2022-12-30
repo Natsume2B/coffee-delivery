@@ -1,7 +1,22 @@
 import { CurrencyDollar, MapPin, Timer } from "phosphor-react"
+import { useContext } from "react"
 import deliveryBike from '../assets/deliveryBike.svg'
+import { PurchaseInfoContext } from "../context/PurchaseInfoContext"
 
 export function CheckoutSuccess() {
+
+  const { creditChecked, debitChecked, moneyChecked } = useContext(PurchaseInfoContext)
+
+  function checkPaymentMethod() {
+    if (creditChecked == true) {
+      return <span>Pagamento na entrega <br /><strong> Cartão de Crédito</strong></span>
+    } else if (debitChecked) {
+      return <span>Pagamento na entrega <br /><strong> Cartão de Débito</strong></span>
+    } else if (moneyChecked) {
+      return <span>Pagamento na entrega <br /><strong>Dinheiro</strong></span>
+    }
+  }
+
   return (
     <div className="grid grid-cols-2 gap-20">
       <section>
@@ -29,7 +44,7 @@ export function CheckoutSuccess() {
               <span className="p-2 rounded-full text-white bg-product-yellow-dark">
                 <CurrencyDollar />
               </span>
-              <span>Pagamento na entrega <br /><strong> Cartão de Crédito</strong></span>
+              {checkPaymentMethod()}
             </div>
           </div>
         </div>
