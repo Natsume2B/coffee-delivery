@@ -4,8 +4,8 @@ import { ShoppingCart } from 'phosphor-react'
 import { Package } from 'phosphor-react'
 import { Timer } from 'phosphor-react'
 import { Coffee } from 'phosphor-react'
-import { productsArray } from '../productsStore'
 import { CoffeeCard } from '../components/CoffeeCard'
+import storeItems from '../data/items.json'
 
 export function Home() {
   return (
@@ -53,8 +53,8 @@ export function Home() {
           Nossos cafés
         </h1>
         <div className='flex flex-wrap gap-8'>
-          {productsArray.map((product) => (
-            <CoffeeCard product={product} />
+          {storeItems.map(item => (
+            <CoffeeCard {...item} />
           ))}
         </div>
 

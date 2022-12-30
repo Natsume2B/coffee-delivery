@@ -4,11 +4,37 @@ import { CurrencyDollar } from 'phosphor-react'
 import { CheckoutCoffeeCard } from '../components/CheckoutCoffeeCard'
 
 import { NavLink } from 'react-router-dom'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { PurchaseInfoContext } from '../context/PurchaseInfoContext'
 
+import storeItems from '../data/items.json'
+
 export function Checkout() {
-  const { creditCardButton, debitCardButton, moneyButton } = useContext(PurchaseInfoContext)
+
+  const { creditCardButton, debitCardButton, moneyButton, cartItems, currencyFormat, cartQuantity } = useContext(PurchaseInfoContext)
+  const entrega = 3.50
+
+  function checkConfirmButton() {
+    if (cartQuantity == 0) {
+      return <div
+        className='flex justify-center rounded-md py-3 bg-product-yellow text-white cursor-not-allowed opacity-70'
+      >
+        <button className='cursor-not-allowed'>
+          CONFIRMAR PEDIDO
+        </button>
+      </div>
+    } else if(cartQuantity >= 1) {
+     return  <NavLink
+     to='/checkoutSuccess'
+     title='checkout com sucesso'
+     className='flex justify-center rounded-md py-3 bg-product-yellow text-white hover:bg-product-yellow-dark'
+   >
+     <button>
+       CONFIRMAR PEDIDO
+     </button>
+   </NavLink>
+    }
+  }
 
   return (
     <div className='grid grid-cols-[60%_40%] gap-8'>
@@ -115,31 +141,31 @@ export function Checkout() {
         <div className='items-center rounded-tr-[2.750rem] rounded-bl-[2.750rem] rounded-tl-md rounded-br-md bg-base-card pb-10'>
           <div>
             <div className='flex flex-col px-10 mb-6'>
-              <CheckoutCoffeeCard  />
+              {cartItems.map(item => (
+                <CheckoutCoffeeCard key={item.name} {...item} />
+              ))}
             </div>
           </div>
           <div className='px-10'>
             <div className='flex justify-between mb-3'>
               <span className='text-sm'>Total de itens</span>
-              <span>R$ 29,70</span>
+              <span>{currencyFormat(cartItems.reduce((total, cartItem) => {
+                const item = storeItems.find(item => item.name === cartItem.name)
+                return total + (item?.price || 0) * cartItem.quantity
+              }, 0))}</span>
             </div>
             <div className='flex justify-between mb-3'>
               <span className='text-sm'>Entrega</span>
-              <span>R$ 3,50</span>
+              <span>R$ {currencyFormat(entrega)}</span>
             </div>
             <div className='flex justify-between mb-6'>
               <span className='font-bold text-xl'>Total</span>
-              <span className='font-bold text-xl'>R$ 33,20</span>
+              <span className='font-bold text-xl'>R$ {currencyFormat(cartItems.reduce((total, cartItem) => {
+                const item = storeItems.find(item => item.name === cartItem.name)
+                return total + (item?.price || 0) * cartItem.quantity
+              }, 0) + entrega)}</span>
             </div>
-            <NavLink
-              to='/checkoutSuccess'
-              title='checkout com sucesso'
-              className='flex justify-center rounded-md py-3 bg-product-yellow text-white hover:bg-product-yellow-dark'
-            >
-              <button>
-                CONFIRMAR PEDIDO
-              </button>
-            </NavLink>
+              {checkConfirmButton()}
           </div>
         </div>
       </section>

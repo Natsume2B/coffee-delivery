@@ -2,18 +2,20 @@ import coffee from '../assets/coffee-delivery-logo.svg'
 import { MapPin, ShoppingCart } from 'phosphor-react'
 
 import { NavLink } from 'react-router-dom'
+import { useContext } from 'react'
+import { PurchaseInfoContext } from '../context/PurchaseInfoContext'
 
 export function Header() {
 
-  const totalQuantity = 1
+  const { cartQuantity } = useContext(PurchaseInfoContext)
 
   function showTotalQuantity() {
-    if (totalQuantity <= 0) {
+    if (cartQuantity <= 0) {
       return <p></p>
     } else {
       return <span
         className='text-xs font-bold text-white bg-product-yellow-dark rounded-full py-1 px-2'>
-        {totalQuantity}
+        {cartQuantity}
       </span>
     }
   }
