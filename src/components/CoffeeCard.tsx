@@ -60,7 +60,7 @@ export function CoffeeCard({ name, src, numberOfTypes, coffeeType1, coffeeType2,
       <div className="flex items-center mb-5">
         <span className="text-sm mr-1">R$</span>
         <span className="font-baloo2 text-2xl mr-6">{currencyFormat(price)}</span>
-        <div className="flex gap-3 mr-2 p-2  rounded-md bg-base-button">
+        <div className="flex gap-3 mr-2 py-2 px-4  rounded-md bg-base-button">
           <button
             className="text-product-purple hover:text-product-purple-dark"
             onClick={() => decreaseCartQuantity(name)}
@@ -75,11 +75,6 @@ export function CoffeeCard({ name, src, numberOfTypes, coffeeType1, coffeeType2,
             <Plus weight="bold" size={14} />
           </button>
         </div>
-        <button
-          className="rounded-md text-base-card p-2 bg-product-purple-dark hover:bg-product-purple"
-        >
-          <ShoppingCart weight="fill" size={22} />
-        </button>
       </div>
     </div>
   )
