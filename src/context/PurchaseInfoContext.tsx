@@ -150,7 +150,7 @@ export function PurchaseInfoContextProvider({
     }
   }
 
-  function currencyFormat(num) {
+  function currencyFormat(num: any) {
     return num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g,).replaceAll('.', ',')
   }
 
