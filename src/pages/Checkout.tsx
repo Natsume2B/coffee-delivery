@@ -4,7 +4,7 @@ import { CurrencyDollar } from 'phosphor-react'
 import { CheckoutCoffeeCard } from '../components/CheckoutCoffeeCard'
 
 import { NavLink } from 'react-router-dom'
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import { PurchaseInfoContext } from '../context/PurchaseInfoContext'
 
 import storeItems from '../data/items.json'
