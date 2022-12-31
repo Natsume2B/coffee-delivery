@@ -39,7 +39,6 @@ export function CheckoutSuccess() {
               </span>
               <span>Previsão de entrega <br /><strong> 20 min - 30 min</strong></span>
             </div>
-
             <div className="flex gap-3 items-center mb-8 ">
               <span className="p-2 rounded-full text-white bg-product-yellow-dark">
                 <CurrencyDollar />
