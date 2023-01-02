@@ -52,11 +52,11 @@ export function PurchaseInfoContextProvider({
   }
 
   function increaseCartQuantity(name: string) {
-    setCartItems(currentItems => {
-      if (currentItems.find(item => item.name === name) == null) {
-        return [...currentItems, { name, quantity: 1 }]
+    setCartItems(currentItem => {
+      if (currentItem.find(item => item.name === name) == null) {
+        return [...currentItem, { name, quantity: 1 }]
       } else {
-        return currentItems.map(item => {
+        return currentItem.map(item => {
           if (item.name === name) {
             return { ...item, quantity: item.quantity + 1 }
           } else {
@@ -68,11 +68,11 @@ export function PurchaseInfoContextProvider({
   }
 
   function decreaseCartQuantity(name: string) {
-    setCartItems(currentItems => {
-      if (currentItems.find(item => item.name === name)?.quantity == 1) {
-        return currentItems.filter(item => item.name !== name)
+    setCartItems(currentItem => {
+      if (currentItem.find(item => item.name === name)?.quantity == 1) {
+        return currentItem.filter(item => item.name !== name)
       } else {
-        return currentItems.map(item => {
+        return currentItem.map(item => {
           if (item.name === name) {
             return { ...item, quantity: item.quantity - 1 }
           } else {
@@ -84,8 +84,8 @@ export function PurchaseInfoContextProvider({
   }
 
   function removeFromCart(name: string) {
-    setCartItems(currentItems => {
-      return currentItems.filter(item => item.name !== name)
+    setCartItems(currentItem => {
+      return currentItem.filter(item => item.name !== name)
     })
   }
 
