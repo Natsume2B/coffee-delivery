@@ -3,7 +3,6 @@ import { CurrencyDollar } from 'phosphor-react'
 
 import { CheckoutCoffeeCard } from '../components/CheckoutCoffeeCard'
 
-import { NavLink } from 'react-router-dom'
 import { useContext } from 'react'
 import { PurchaseInfoContext } from '../context/PurchaseInfoContext'
 
@@ -11,7 +10,7 @@ import storeItems from '../data/items.json'
 
 export function Checkout() {
 
-  const { creditCardButton, debitCardButton, moneyButton, cartItems, currencyFormat, cartQuantity } = useContext(PurchaseInfoContext)
+  const { creditCardButton, debitCardButton, moneyButton, cartItems, currencyFormat, cartQuantity, handle, submit } = useContext(PurchaseInfoContext)
   const entrega = 3.50
 
   function checkConfirmButton() {
@@ -19,20 +18,19 @@ export function Checkout() {
       return <div
         className='flex justify-center rounded-md py-3 bg-product-yellow text-white cursor-not-allowed opacity-70'
       >
-        <button className='cursor-not-allowed'>
+        <button className='cursor-not-allowed w-full'>
           CONFIRMAR PEDIDO
         </button>
       </div>
-    } else if(cartQuantity >= 1) {
-     return  <NavLink
-     to='/checkoutSuccess'
-     title='checkout com sucesso'
-     className='flex justify-center rounded-md py-3 bg-product-yellow text-white hover:bg-product-yellow-dark'
-   >
-     <button>
-       CONFIRMAR PEDIDO
-     </button>
-   </NavLink>
+    } else if (cartQuantity >= 1) {
+      return <div
+        title='checkout com sucesso'
+        className='flex justify-center rounded-md py-3 bg-product-yellow text-white hover:bg-product-yellow-dark'
+      >
+        <button type='submit' form='form' className='w-full'>
+          CONFIRMAR PEDIDO
+        </button>
+      </div>
     }
   }
 
@@ -53,11 +51,12 @@ export function Checkout() {
             </header>
           </div>
 
-          <form action="" className='grid grid-cols-[30%_55%_15%] gap-3'>
+          <form id='form' onSubmit={(e) => submit(e)} className='grid grid-cols-[30%_55%_15%] gap-3'>
 
             <input type="number"
               placeholder="CEP"
               name="cep"
+              required
               className='mb-1 p-3 rounded row-start-1 focus:border-none focus:outline focus:outline-product-yellow-dark bg-base-input border border-base-button text-base-label'
             />
             <label htmlFor="cep"></label>
@@ -66,7 +65,10 @@ export function Checkout() {
               type="text"
               placeholder="Rua"
               name="rua"
+              id="rua"
+              required
               className='mb-1 p-3 rounded row-start-2 col-span-3 focus:border-none focus:outline focus:outline-product-yellow-dark bg-base-input border border-base-button text-base-label'
+              onChange={(e) => handle(e)}
             />
             <label htmlFor="rua"></label>
 
@@ -75,7 +77,10 @@ export function Checkout() {
               type="number"
               placeholder="Número"
               name="numero"
+              id="numero"
+              required
               className='mb-1 p-3 rounded row-start-3 focus:border-none focus:outline focus:outline-product-yellow-dark bg-base-input border border-base-button text-base-label'
+              onChange={(e) => handle(e)}
             />
             <label htmlFor="numero"></label>
 
@@ -91,7 +96,10 @@ export function Checkout() {
               type="text"
               placeholder="Bairro"
               name="bairro"
+              id="bairro"
+              required
               className='mb-1 p-3 rounded row-start-4 focus:border-none focus:outline focus:outline-product-yellow-dark bg-base-input border border-base-button text-base-label'
+              onChange={(e) => handle(e)}
             />
             <label htmlFor="bairro"></label>
 
@@ -99,7 +107,10 @@ export function Checkout() {
               type="text"
               placeholder="Cidade"
               name="cidade"
+              id='cidade'
+              required
               className='mb-1 p-3 rounded row-start-4 focus:border-none focus:outline focus:outline-product-yellow-dark bg-base-input border border-base-button text-base-label'
+              onChange={(e) => handle(e)}
             />
             <label htmlFor="cidade"></label>
 
@@ -107,11 +118,13 @@ export function Checkout() {
               type="text"
               placeholder="UF"
               name="uf"
+              id='uf'
+              required
               className='mb-1 p-3 rounded row-start-4 focus:border-none focus:outline focus:outline-product-yellow-dark bg-base-input border border-base-button text-base-label'
               maxLength={2}
+              onChange={(e) => handle(e)}
             />
             <label htmlFor="uf"></label>
-
           </form>
         </div>
 
@@ -165,7 +178,7 @@ export function Checkout() {
                 return total + (item?.price || 0) * cartItem.quantity
               }, 0) + entrega)}</span>
             </div>
-              {checkConfirmButton()}
+            {checkConfirmButton()}
           </div>
         </div>
       </section>

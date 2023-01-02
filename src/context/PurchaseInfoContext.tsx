@@ -3,6 +3,7 @@ import { Bank } from 'phosphor-react'
 import { Money } from 'phosphor-react'
 
 import { createContext, ReactNode, useState } from "react";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 
 interface PurchaseInfoContextProviderProps {
@@ -19,17 +20,19 @@ interface PurschaseInfoContext {
   increaseCartQuantity: (name: string) => void
   decreaseCartQuantity: (name: string) => void
   removeFromCart: (name: string) => void
-  cartQuantity: number,
+  cartQuantity: number
   cartItems: cartItem[]
 
   creditCardButton: () => void
   debitCardButton: () => void
   moneyButton: () => void
-  creditChecked: boolean,
-  debitChecked: boolean,
-  moneyChecked: boolean,
+  creditChecked: boolean
+  debitChecked: boolean
+  moneyChecked: boolean
 
   currencyFormat: (num: number) => number
+  handle: (e) => void
+  submit: (e) => void
 }
 
 export const PurchaseInfoContext = createContext({} as PurschaseInfoContext)
@@ -37,7 +40,7 @@ export const PurchaseInfoContext = createContext({} as PurschaseInfoContext)
 export function PurchaseInfoContextProvider({
   children,
 }: PurchaseInfoContextProviderProps) {
-  const [cartItems, setCartItems] = useState<cartItem[]>([])
+  const [cartItems, setCartItems] = useLocalStorage<cartItem[]>("shopping-cart", [])
 
   const [creditChecked, setCreditChecked] = useState(true)
   const [debitChecked, setDebitChecked] = useState(false)
@@ -46,6 +49,26 @@ export function PurchaseInfoContextProvider({
   const cartQuantity = cartItems.reduce(
     (quantity, item) => item.quantity + quantity, 0
   )
+
+  const [data, setData] = useLocalStorage({
+    rua: "",
+    numero: 0,
+    bairro: "",
+    cidade: "",
+    uf: "",
+  }, {})
+
+  function handle(e) {
+    const newdata = { ...data }
+    newdata[e.target.id] = e.target.value
+    setData(newdata)
+  }
+
+  function submit(e) {
+    e.preventDefault()
+    window.location.href = '/CheckoutSuccess'
+    setCartItems([])
+  }
 
   function getItemQuantity(name: string) {
     return cartItems.find(item => item.name === name)?.quantity || 0
@@ -169,7 +192,10 @@ export function PurchaseInfoContextProvider({
         moneyButton,
         creditChecked,
         debitChecked,
-        moneyChecked
+        moneyChecked,
+        handle,
+        submit,
+        data,
       }}
     >
       {children}
