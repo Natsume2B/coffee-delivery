@@ -2,7 +2,7 @@ import { CreditCard } from "phosphor-react";
 import { Bank } from 'phosphor-react'
 import { Money } from 'phosphor-react'
 
-import React, { createContext, ReactComponentElement, ReactNode, useState } from "react";
+import React, { createContext, ReactNode, useState } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
 
@@ -23,6 +23,7 @@ interface PurschaseInfoContext {
   cartQuantity: number
   cartItems: cartItem[]
 
+  currencyFormat: (num: number) => number
   creditCardButton: () => any
   debitCardButton: () => any
   moneyButton: () => any
@@ -30,10 +31,10 @@ interface PurschaseInfoContext {
   debitChecked: boolean
   moneyChecked: boolean
 
-  currencyFormat: (num: number) => number
-  handle: (e:  React.FormEvent) => void
-  submit: (e:  React.FormEvent) => void
-  data:{
+
+  handle: (e: React.FormEvent) => void
+  submit: (e: React.FormEvent) => void
+  data: {
     rua: string,
     numero: number,
     bairro: string,

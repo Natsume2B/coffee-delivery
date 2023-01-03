@@ -88,9 +88,9 @@ export function Checkout() {
               type="text"
               placeholder="Complemento"
               name="complemento"
-              className='mb-1 p-3 rounded row-start-3 focus:border-none focus:outline focus:outline-product-yellow-dark bg-base-input border border-base-button text-base-label'
+              className='mb-1 p-3 rounded row-start-3 col-start-2 focus:border-none focus:outline focus:outline-product-yellow-dark bg-base-input border border-base-button text-base-label'
             />
-            <label htmlFor="complemento"></label>
+            <label htmlFor="complemento" id='complemento' className='row-start-3 col-start-2 mt-4 ml-[75%] text-base-label text-sm mix-blend-darken italic opacity-85'>Opcional</label>
 
             <input
               type="text"
