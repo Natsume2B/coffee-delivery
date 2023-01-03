@@ -2,7 +2,8 @@ import { CreditCard } from "phosphor-react";
 import { Bank } from 'phosphor-react'
 import { Money } from 'phosphor-react'
 
-import { createContext, ReactNode, useState } from "react";
+import React, { createContext, ReactNode, useState } from "react";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 
 interface PurchaseInfoContextProviderProps {
@@ -19,17 +20,27 @@ interface PurschaseInfoContext {
   increaseCartQuantity: (name: string) => void
   decreaseCartQuantity: (name: string) => void
   removeFromCart: (name: string) => void
-  cartQuantity: number,
+  cartQuantity: number
   cartItems: cartItem[]
 
-  creditCardButton: () => void
-  debitCardButton: () => void
-  moneyButton: () => void
-  creditChecked: boolean,
-  debitChecked: boolean,
-  moneyChecked: boolean,
-
   currencyFormat: (num: number) => number
+  creditCardButton: () => any
+  debitCardButton: () => any
+  moneyButton: () => any
+  creditChecked: boolean
+  debitChecked: boolean
+  moneyChecked: boolean
+
+
+  handle: (e: React.FormEvent) => void
+  submit: (e: React.FormEvent) => void
+  data: {
+    rua: string,
+    numero: number,
+    bairro: string,
+    cidade: string,
+    uf: string,
+  }
 }
 
 export const PurchaseInfoContext = createContext({} as PurschaseInfoContext)
@@ -37,7 +48,7 @@ export const PurchaseInfoContext = createContext({} as PurschaseInfoContext)
 export function PurchaseInfoContextProvider({
   children,
 }: PurchaseInfoContextProviderProps) {
-  const [cartItems, setCartItems] = useState<cartItem[]>([])
+  const [cartItems, setCartItems] = useLocalStorage<cartItem[]>("shopping-cart", [])
 
   const [creditChecked, setCreditChecked] = useState(true)
   const [debitChecked, setDebitChecked] = useState(false)
@@ -47,16 +58,36 @@ export function PurchaseInfoContextProvider({
     (quantity, item) => item.quantity + quantity, 0
   )
 
+  const [data, setData] = useLocalStorage("adress-data", {
+    rua: "",
+    numero: 0,
+    bairro: "",
+    cidade: "",
+    uf: "",
+  })
+
+  function handle(e: React.FormEvent) {
+    const newdata = { ...data }
+    newdata[e.target.id] = (event?.target as HTMLInputElement).value
+    setData(newdata)
+  }
+
+  function submit(e: React.FormEvent) {
+    e.preventDefault()
+    window.location.href = '/CheckoutSuccess'
+    setCartItems([])
+  }
+
   function getItemQuantity(name: string) {
     return cartItems.find(item => item.name === name)?.quantity || 0
   }
 
   function increaseCartQuantity(name: string) {
-    setCartItems(currentItems => {
-      if (currentItems.find(item => item.name === name) == null) {
-        return [...currentItems, { name, quantity: 1 }]
+    setCartItems(currentItem => {
+      if (currentItem.find(item => item.name === name) == null) {
+        return [...currentItem, { name, quantity: 1 }]
       } else {
-        return currentItems.map(item => {
+        return currentItem.map(item => {
           if (item.name === name) {
             return { ...item, quantity: item.quantity + 1 }
           } else {
@@ -68,11 +99,11 @@ export function PurchaseInfoContextProvider({
   }
 
   function decreaseCartQuantity(name: string) {
-    setCartItems(currentItems => {
-      if (currentItems.find(item => item.name === name)?.quantity == 1) {
-        return currentItems.filter(item => item.name !== name)
+    setCartItems(currentItem => {
+      if (currentItem.find(item => item.name === name)?.quantity == 1) {
+        return currentItem.filter(item => item.name !== name)
       } else {
-        return currentItems.map(item => {
+        return currentItem.map(item => {
           if (item.name === name) {
             return { ...item, quantity: item.quantity - 1 }
           } else {
@@ -84,8 +115,8 @@ export function PurchaseInfoContextProvider({
   }
 
   function removeFromCart(name: string) {
-    setCartItems(currentItems => {
-      return currentItems.filter(item => item.name !== name)
+    setCartItems(currentItem => {
+      return currentItem.filter(item => item.name !== name)
     })
   }
 
@@ -169,7 +200,10 @@ export function PurchaseInfoContextProvider({
         moneyButton,
         creditChecked,
         debitChecked,
-        moneyChecked
+        moneyChecked,
+        handle,
+        submit,
+        data,
       }}
     >
       {children}

@@ -5,7 +5,7 @@ import { PurchaseInfoContext } from "../context/PurchaseInfoContext"
 
 export function CheckoutSuccess() {
 
-  const { creditChecked, debitChecked, moneyChecked } = useContext(PurchaseInfoContext)
+  const { creditChecked, debitChecked, moneyChecked, data } = useContext(PurchaseInfoContext)
 
   function checkPaymentMethod() {
     if (creditChecked == true) {
@@ -30,7 +30,7 @@ export function CheckoutSuccess() {
               <span className="p-2 rounded-full text-white bg-product-purple">
                 <MapPin weight="fill" />
               </span>
-              <span>Entrega em <strong> Rua João Daniel Martinelli, 102</strong><br /> Farrapos - Porto Alegre, RS</span>
+              <span>Entrega em <strong> {data.rua}, {data.numero}</strong><br /> {data.bairro} - {data.cidade}, {data.uf}</span>
             </div>
 
             <div className="flex gap-3 items-center mb-8 ">
