@@ -2,7 +2,7 @@ import { CreditCard } from "phosphor-react";
 import { Bank } from 'phosphor-react'
 import { Money } from 'phosphor-react'
 
-import { createContext, ReactNode, useState } from "react";
+import React, { createContext, ReactComponentElement, ReactNode, useState } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
 
@@ -23,16 +23,23 @@ interface PurschaseInfoContext {
   cartQuantity: number
   cartItems: cartItem[]
 
-  creditCardButton: () => void
-  debitCardButton: () => void
-  moneyButton: () => void
+  creditCardButton: () => any
+  debitCardButton: () => any
+  moneyButton: () => any
   creditChecked: boolean
   debitChecked: boolean
   moneyChecked: boolean
 
   currencyFormat: (num: number) => number
-  handle: (e) => void
-  submit: (e) => void
+  handle: (e:  React.FormEvent) => void
+  submit: (e:  React.FormEvent) => void
+  data:{
+    rua: string,
+    numero: number,
+    bairro: string,
+    cidade: string,
+    uf: string,
+  }
 }
 
 export const PurchaseInfoContext = createContext({} as PurschaseInfoContext)
@@ -50,21 +57,21 @@ export function PurchaseInfoContextProvider({
     (quantity, item) => item.quantity + quantity, 0
   )
 
-  const [data, setData] = useLocalStorage({
+  const [data, setData] = useLocalStorage("adress-data", {
     rua: "",
     numero: 0,
     bairro: "",
     cidade: "",
     uf: "",
-  }, {})
+  })
 
-  function handle(e) {
+  function handle(e: React.FormEvent) {
     const newdata = { ...data }
-    newdata[e.target.id] = e.target.value
+    newdata[e.target.id] = (event?.target as HTMLInputElement).value
     setData(newdata)
   }
 
-  function submit(e) {
+  function submit(e: React.FormEvent) {
     e.preventDefault()
     window.location.href = '/CheckoutSuccess'
     setCartItems([])

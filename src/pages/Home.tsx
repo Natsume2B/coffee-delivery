@@ -54,7 +54,7 @@ export function Home() {
         </h1>
         <div className='flex flex-wrap gap-8'>
           {storeItems.map(item => (
-            <CoffeeCard {...item} />
+            <CoffeeCard key={item.name} {...item} />
           ))}
         </div>
 
