@@ -12,7 +12,7 @@ export function CheckoutCoffeeCard({ name, quantity }: CheckoutCoffeeProps) {
 
   const item = storeItems.find(item => item.name === name)
   if (item == null) return null
-  const { removeFromCart, increaseCartQuantity, decreaseCartQuantity, currencyFormat } = useContext(PurchaseInfoContext)
+  const { removeFromCart, increaseCartQuantityFromCart, decreaseCartQuantityFromCart, currencyFormat } = useContext(PurchaseInfoContext)
 
   return (
     <div className='flex gap-5 pt-10 pb-6 border-b border-base-button justify-between'>
@@ -23,14 +23,14 @@ export function CheckoutCoffeeCard({ name, quantity }: CheckoutCoffeeProps) {
           <div className='flex gap-3 p-2 rounded-md bg-base-button'>
             <button
               className="text-product-purple hover:text-product-purple-dark"
-              onClick={() => decreaseCartQuantity(item.name)}
+              onClick={() => decreaseCartQuantityFromCart(item.name)}
             >
               <Minus weight="bold" size={14} />
             </button>
             <span>{quantity}</span>
             <button
               className="text-product-purple hover:text-product-purple-dark"
-              onClick={() => increaseCartQuantity(item.name)}
+              onClick={() => increaseCartQuantityFromCart(item.name)}
             >
               <Plus weight="bold" size={14} />
             </button>

@@ -19,7 +19,10 @@ interface PurschaseInfoContext {
   getItemQuantity: (name: string) => number
   increaseCartQuantity: (name: string) => void
   decreaseCartQuantity: (name: string) => void
+  increaseCartQuantityFromCart:(name:string) => void
+  decreaseCartQuantityFromCart:(name:string) => void
   removeFromCart: (name: string) => void
+  handleCart: () => void
   cartQuantity: number
   cartItems: cartItem[]
 
@@ -49,6 +52,7 @@ export function PurchaseInfoContextProvider({
   children,
 }: PurchaseInfoContextProviderProps) {
   const [cartItems, setCartItems] = useLocalStorage<cartItem[]>("shopping-cart", [])
+  const [handleCartItems, setHandleCartItems] = useState<cartItem[]>([])
 
   const [creditChecked, setCreditChecked] = useState(true)
   const [debitChecked, setDebitChecked] = useState(false)
@@ -79,11 +83,11 @@ export function PurchaseInfoContextProvider({
   }
 
   function getItemQuantity(name: string) {
-    return cartItems.find(item => item.name === name)?.quantity || 0
+    return handleCartItems.find(item => item.name === name)?.quantity || 0
   }
 
   function increaseCartQuantity(name: string) {
-    setCartItems(currentItem => {
+    setHandleCartItems(currentItem => {
       if (currentItem.find(item => item.name === name) == null) {
         return [...currentItem, { name, quantity: 1 }]
       } else {
@@ -99,6 +103,38 @@ export function PurchaseInfoContextProvider({
   }
 
   function decreaseCartQuantity(name: string) {
+    setHandleCartItems(currentItem => {
+      if (currentItem.find(item => item.name === name)?.quantity == 1) {
+        return currentItem.filter(item => item.name !== name)
+      } else {
+        return currentItem.map(item => {
+          if (item.name === name) {
+            return { ...item, quantity: item.quantity - 1 }
+          } else {
+            return item
+          }
+        })
+      }
+    })
+  }
+
+  function increaseCartQuantityFromCart(name: string) {
+    setCartItems(currentItem => {
+      if (currentItem.find(item => item.name === name) == null) {
+        return [...currentItem, { name, quantity: 1 }]
+      } else {
+        return currentItem.map(item => {
+          if (item.name === name) {
+            return { ...item, quantity: item.quantity + 1 }
+          } else {
+            return item
+          }
+        })
+      }
+    })
+  }
+
+  function decreaseCartQuantityFromCart(name: string) {
     setCartItems(currentItem => {
       if (currentItem.find(item => item.name === name)?.quantity == 1) {
         return currentItem.filter(item => item.name !== name)
@@ -118,6 +154,10 @@ export function PurchaseInfoContextProvider({
     setCartItems(currentItem => {
       return currentItem.filter(item => item.name !== name)
     })
+  }
+
+  function handleCart() {
+    setCartItems(handleCartItems)
   }
 
 
@@ -191,9 +231,12 @@ export function PurchaseInfoContextProvider({
         getItemQuantity,
         increaseCartQuantity,
         decreaseCartQuantity,
+        increaseCartQuantityFromCart,
+        decreaseCartQuantityFromCart,
         removeFromCart,
         cartItems,
         cartQuantity,
+        handleCart,
         currencyFormat,
         creditCardButton,
         debitCardButton,
