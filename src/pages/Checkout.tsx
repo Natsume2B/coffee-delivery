@@ -24,7 +24,7 @@ export function Checkout() {
       </div>
     } else if (cartQuantity >= 1) {
       return <div
-        title='checkout com sucesso'
+        title='confirmar pedido'
         className='flex justify-center rounded-md bg-product-yellow text-white hover:bg-product-yellow-dark'
       >
         <button type='submit' form='form' className='w-full py-3'>

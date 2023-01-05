@@ -35,14 +35,16 @@ export function CheckoutCoffeeCard({ name, quantity }: CheckoutCoffeeProps) {
               <Plus weight="bold" size={14} />
             </button>
           </div>
-          <div className='p-2 gap-1 rounded-md bg-base-button hover:bg-base-hover '>
+          <div className='gap-1'>
             <button
-              className='text-base-text flex items-center gap-1 hover:text-base-subtitle  '
+              className='flex items-center gap-1 p-2 rounded-md text-base-text hover:text-base-subtitle bg-base-button hover:bg-base-hover  '
               onClick={() => removeFromCart(item.name)}
+              title="remover"
             >
-              <span><Trash
-                className='text-product-purple hover:text-product-purple-dark'
-              />
+              <span>
+                <Trash
+                  className='text-product-purple hover:text-product-purple-dark'
+                />
               </span>
               REMOVER
             </button>
